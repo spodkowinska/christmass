@@ -28,7 +28,7 @@ public class PresentController {
         model.addAttribute("present1", present1);
         model.addAttribute("present2", present2);
         model.addAttribute("present3", present3);
-        return "presentsAdd";
+        return "presentAdd";
     }
 
     @PostMapping("/addPresent")
@@ -36,12 +36,12 @@ public class PresentController {
                                  @Valid @ModelAttribute Present present2,
                                  @Valid @ModelAttribute Present present3, BindingResult result){
         if (result.hasErrors()) {
-            return "presentsAdd";
+            return "presentAdd";
         }
         presentService.create(present1);
         presentService.create(present2);
         presentService.create(present3);
-        return "redirect:thankYou";
+        return "redirect:/home";
     }
 
     @GetMapping("/thankYou")
@@ -49,9 +49,6 @@ public class PresentController {
         return"thankYou";
     }
 
-//    @ModelAttribute("listOfCategories")
-//    public List<Category> listOfCategories(){
-//        return presentService.findAllCategories();
-//    }
+
 
 }

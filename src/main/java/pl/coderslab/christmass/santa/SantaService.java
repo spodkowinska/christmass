@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.coderslab.christmass.user.User;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 
 @Service
@@ -36,21 +33,34 @@ public class SantaService {
         this.santaRepository.deleteById(id);
     }
 
-    public List<Santa> findAllSantas(){
+    public List<Santa> findAllSantas() {
         return santaRepository.findAll();
     }
 
     public void joinInPairs(List<User> users) {
         Random random = new Random();
+        int randomInt = random.nextInt(users.size() - 2) + 2;
+        Integer counter = 0;
         Map<Integer, Long> randomGiver = new HashMap<>();
         Map<Long, Long> giverGetter = new HashMap<>();
         for (User user : users) {
-            randomGiver.put(random.nextInt(users.size() + 1), user.getId());
+            randomGiver.put(counter, user.getId());
+            counter++;
         }
-        for (int i = 0; i < randomGiver.size() - 1; i++) {
-            giverGetter.put(randomGiver.get(i), randomGiver.get(i + 1));
-        }
-        giverGetter.put(randomGiver.get(randomGiver.size()), randomGiver.get(0));
+
+//        1,2,3,4,5,6,7
+        //3,4,5,6,7,1,2
+//Integer i = 0;
+
+
+            for (int i = 0; i < randomGiver.size(); i++) {
+
+                if (i + randomInt >= randomGiver.size()) {
+                    giverGetter.put(randomGiver.get(i), randomGiver.get(i - randomGiver.size() + randomInt));
+                }else{
+                giverGetter.put(randomGiver.get(i), randomGiver.get(i + randomInt));
+                }
+            }
         for (Map.Entry<Long, Long> entry : giverGetter.entrySet()) {
             Santa santa = new Santa();
             santa.setGiversId(entry.getValue());
