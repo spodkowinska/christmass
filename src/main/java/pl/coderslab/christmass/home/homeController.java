@@ -51,7 +51,9 @@ public class homeController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
         return "login";
     }
 
@@ -61,12 +63,14 @@ public class homeController {
             return "login";
         }
 
-        return "";
+        return "redirect:home";
     }
 
 
     @GetMapping("/forgotpassword")
     public String forgotPassword() {
-        return "forgot-password";
+        return "forgotpassword";
     }
+
+
 }

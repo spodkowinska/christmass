@@ -27,7 +27,6 @@ public class SantaController {
 
 
     @GetMapping("/becomeSanta")
-    @ResponseBody
     public String getSanta() {
         santaService.joinInPairs(userService.findAll());
         return "santa";
