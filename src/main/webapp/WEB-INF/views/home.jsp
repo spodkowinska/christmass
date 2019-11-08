@@ -33,7 +33,7 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <a href="/becomeSanta"
+                                        <a href="/user/santa/7"
                                            class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                             Whose Santa are you?
                                         </a>
@@ -55,7 +55,7 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <a href="/addPresent"
+                                        <a href="/user/addPresent"
                                            class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             What's there for you?
                                         </a>
@@ -81,10 +81,17 @@
                             </div>
                             <div class="card-body">
                                 <div class="text-center">
-                                    <img src="/../../img/Marry-Christmas.jpg">
+                                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 30rem;"
+                                         src="/img/Merry-Christmas.jpg">
                                 </div>
-                                <p>In time there will be more information about our event. Dates, places and much
-                                    more. </p>
+                                <p>My dearest family and friends!<br> This time of the year as always brings us all together.
+                                    This year again we will be meeting to celebrate!
+                                    No matter whether it is Christmass, Hanukkah or Newtonmas we meet, drink, feast, play and catch up on this years on-goings.
+                                    <br>In time there will be more information about our event so please come in here to stay in touch.
+
+
+                                    Thist year we are meeting at Mila 100 m 150 01-100 Warsaw at 20th December 5pm. More info coming soon!
+                                    </p>
                                 <p></p>
 
                             </div>

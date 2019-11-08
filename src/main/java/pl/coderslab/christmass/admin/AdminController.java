@@ -11,6 +11,8 @@ import pl.coderslab.christmass.user.UserService;
 
 import javax.validation.Valid;
 import java.awt.print.Book;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -24,6 +26,9 @@ public class AdminController {
         this.adminService = adminService;
         this.userService = userService;
     }
+//@TODO change status list
+//@TODO status as enum
+//@TODO user controller with all logics
 
     @GetMapping("/usersList")
     private String usersList(){
@@ -68,5 +73,7 @@ public class AdminController {
     public List<User> getUsers() {
         return adminService.findAllUsers();
     }
+    @ModelAttribute("status")
+    public List<String>getStatus(){ return Arrays.asList("ready", "paid", "notpaid", "santa");}
 
 }

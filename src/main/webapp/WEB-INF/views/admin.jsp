@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: sandracoderslab
@@ -47,6 +48,7 @@
                     <th>Delete user</th>
                 </tr>
                 <c:forEach items="${users}" var="user">
+                    
                     <tr>
                         <td>${user.fullName}</td>
                         <td>
@@ -89,11 +91,17 @@
                             <a class="btn btn-primary" href="/admin/hasPaid/${user.id}">Change</a>
                         </td>
                         <td>
-                            <a class="btn btn-warning" href="/becomeSanta/${user.id}">Draw Santa</a>
+
+<%--                                <form:select path="user.status" items="${status}" itemLabel="status" itemValue="status"/><br>--%>
+
+<%--                                <form:errors path="user.status" element="div" cssStyle="color:red"/>--%>
                         </td>
+<%--                        <td>--%>
+<%--                            <a class="btn btn-warning" href="user/santa/${user.id}">Draw Santa</a>--%>
+<%--                        </td>--%>
                         <td>
                             <a class="btn btn-danger" href="#" onclick="confirmDelete(${user.id}, '${user.fullName}')">
-                                Delete person</a>
+                                Delete</a>
                         </td>
                     </tr>
                 </c:forEach>

@@ -9,4 +9,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select u from User u")
     List<User> findAll();
+
+    @Query("update User u set u.status = 'santa' where id = ?1")
+    User setSantaStatus(Long userId);
 }

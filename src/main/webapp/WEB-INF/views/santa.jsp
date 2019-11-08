@@ -37,6 +37,9 @@
                     <c:when test ="${user.status=='ready'}">
                         <h5><spring:message code="pl.coderslab.christmass.ready.1"/></h5>
                         <h5><spring:message code="pl.coderslab.christmass.ready.2"/></h5>
+                        <td>
+                            <a class="btn btn-group-toggle" href="/becomeSanta/${user.id}">Draw Santa</a>
+                        </td></btn>
                     </c:when>
                     <c:when test ="${user.status=='santa'}">
                         <h5><spring:message code="pl.coderslab.christmass.santa.1"/></h5>

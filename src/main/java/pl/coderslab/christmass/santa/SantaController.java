@@ -24,7 +24,7 @@ public class SantaController {
     private UserService userService;
 
 
-    @GetMapping("/becomeSanta/{userId}")
+    @GetMapping("/santa/{userId}")
     public String getSanta(@PathVariable Long userId, Model model) {
         User user = userService.findById(userId);
         if (user != null) {

@@ -35,4 +35,6 @@ public class UserService {
     public List<User> findAll(){
         return userRepository.findAll();
     }
+
+    public User setSantaStatus(Long id){return userRepository.setSantaStatus(id);}
 }
