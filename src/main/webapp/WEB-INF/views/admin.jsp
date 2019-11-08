@@ -14,6 +14,13 @@
     <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
+    <script>
+        function confirmDelete(id, name) {
+            if (confirm("Do you want to delete user '" + name + "'?")) {
+                window.location.href = "/admin/deleteUser/" + id;
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -23,7 +30,7 @@
 
     <div class="card">
         <div class="card-body">
-            <a href="/user/add" class="btn btn-primary">Add new user</a>
+            <a href="/admin/addUser" class="btn btn-primary">Add new user</a>
         </div>
     </div>
 
@@ -31,18 +38,26 @@
         <div class="card-body">
             <table class="table table-hover">
                 <tr>
-                    <th>Title</th>
-                    <th>Rating</th>
-                    <th>Publisher</th>
-                    <th style="width:17%">Actions</th>
+                    <th>Person</th>
+                    <th>Has paid</th>
+                    <th style="width:50%">Actions</th>
                 </tr>
                 <c:forEach items="${users}" var="user">
                     <tr>
                         <td>${user.fullName}</td>
-                        <td>${user.hasPaid}</td>
+                        <td><c:choose>
+                            <c:when test ="${user.hasPaid==true}">
+                                Paid
+                            </c:when>
+                            <c:when test ="${user.hasPaid==false}">
+                                Not yet
+                            </c:when>
+                        </c:choose>
+                        </td>
                         <td>
-                            <a class="btn btn-primary" href="/user/haspaid/${user.id}">Change paid status</a>
-                            <a class="btn btn-danger" href="#" onclick="confirmDelete(${book.id}, '${book.title}')">Delete</a>
+                            <a class="btn btn-primary" href="/admin/hasPaid/${user.id}">Change paid status</a>
+                            <a class="btn btn-danger" href="#" onclick="confirmDelete(${user.id}, '${user.fullName}')">Delete person</a>
+                            <a class="btn btn-warning" href="/user/becomeSanta/${user.id}">Draw Santa</a>
                         </td>
                     </tr>
                 </c:forEach>

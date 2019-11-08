@@ -9,12 +9,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Become Santa!</title>
 </head>
 <body>
 <div class="container">
     <div>
-        <c:out value="${message}"
+
     </div>
 </div>
 </body>

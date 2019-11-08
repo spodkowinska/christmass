@@ -33,6 +33,10 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Present> listOfPresents;
 
+    public String getFullName(){
+        return firstName + " " + lastName;
+    }
+
     private boolean hasPaid;
 
     public Long getId() {
