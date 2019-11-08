@@ -69,7 +69,7 @@ public class homeController {
 
     @GetMapping("/forgotpassword")
     public String forgotPassword() {
-        return "forgotpassword";
+        return "forgotPassword";
     }
 
 

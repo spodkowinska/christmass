@@ -48,11 +48,12 @@ public class AdminController {
     @GetMapping("/hasPaid/{userId}")
     public String hasPaid(@PathVariable Long userId){
         User user = userService.findById(userId);
-        if(user.isHasPaid()){
+        if(user.getHasPaid()==true){
             user.setHasPaid(false);
         }else
             {user.setHasPaid(true);
         }
+        userService.update(user);
         return "redirect:../usersList";
     }
 

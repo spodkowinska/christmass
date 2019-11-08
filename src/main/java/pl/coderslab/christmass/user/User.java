@@ -33,11 +33,23 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Present> listOfPresents;
 
+    private String status;
+
+    private boolean hasPaid;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getFullName(){
         return firstName + " " + lastName;
     }
 
-    private boolean hasPaid;
+
 
     public Long getId() {
         return id;
@@ -87,7 +99,7 @@ public class User implements Serializable {
         this.listOfPresents = listOfPresents;
     }
 
-    public boolean isHasPaid() {
+    public boolean getHasPaid() {
         return hasPaid;
     }
 

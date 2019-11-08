@@ -11,42 +11,47 @@
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
 </head>
 <body>
+
 <div class="card-body">
 
     <div class="p-5">
-
+        <header>Help your Santa by preparing him some hints</header>
         <form:form modelAttribute="present1" method="post">
 
+            <label for="present1">Present 1</label>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <form:textarea path="description" placeholder="What's your biggest desire?"/>
+                    <form:textarea path="description" placeholder="What's your biggest desire?" id="present1"/>
                     <form:errors path="description" element="div" cssStyle="color:red"/>
                 </div>
             </div>
 
 
-        <form:form modelAttribute="present2" method="post">
+            <form:form modelAttribute="present2" method="post">
 
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <form:textarea path="description" placeholder="What's your biggest desire?"/>
-                    <form:errors path="description" element="div" cssStyle="color:red"/>
+                <label for="present2">Present 2</label>
+                <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <form:textarea path="description" placeholder="What's your biggest desire?" id="present2"/>
+                        <form:errors path="description" element="div" cssStyle="color:red"/>
+                    </div>
                 </div>
-            </div>
 
 
-        <form:form modelAttribute="present3" method="post">
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <form:textarea path="description" placeholder="What's your biggest desire?"/>
-                    <form:errors path="description" element="div" cssStyle="color:red"/>
-                </div>
-            </div>
+                <form:form modelAttribute="present3" method="post">
+
+                    <label for="present3">Present 3</label>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <form:textarea path="description" placeholder="What's your biggest desire?" id ="present3"/>
+                            <form:errors path="description" element="div" cssStyle="color:red"/>
+                        </div>
+                    </div>
 
 
-            <input type="submit" value="I want that!" class="btn btn-primary btn-block">
-        </form:form>
-        </form:form>
+                    <input type="submit" value="I want that!" class="btn btn-primary btn-block">
+                </form:form>
+            </form:form>
         </form:form>
     </div>
 

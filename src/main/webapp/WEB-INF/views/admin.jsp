@@ -40,7 +40,11 @@
                 <tr>
                     <th>Person</th>
                     <th>Has paid</th>
-                    <th style="width:50%">Actions</th>
+                    <th>Status</th>
+                    <th>Presents</th>
+                    <th>Change paid status</th>
+                    <th>Change user status</th>
+                    <th>Delete user</th>
                 </tr>
                 <c:forEach items="${users}" var="user">
                     <tr>
@@ -50,12 +54,22 @@
                                 Paid
                             </c:when>
                             <c:when test ="${user.hasPaid==false}">
-                                Not yet
+                                Not
                             </c:when>
                         </c:choose>
                         </td>
+                        <th>
+                            <c:choose>
+                                <c:when test = "${user.listOfPresents!=null}">
+                                    Created
+                                </c:when>
+                                <c:when test = "${user.listOfPresents==null}">
+                                    Not
+                                </c:when>
+                            </c:choose>
+                        </th>
                         <td>
-                            <a class="btn btn-primary" href="/admin/hasPaid/${user.id}">Change paid status</a>
+                            <a class="btn btn-primary" href="/admin/hasPaid/${user.id}">Change</a>
                             <a class="btn btn-danger" href="#" onclick="confirmDelete(${user.id}, '${user.fullName}')">Delete person</a>
                             <a class="btn btn-warning" href="/user/becomeSanta/${user.id}">Draw Santa</a>
                         </td>

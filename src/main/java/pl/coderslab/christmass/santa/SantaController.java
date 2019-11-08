@@ -3,10 +3,8 @@ package pl.coderslab.christmass.santa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import pl.coderslab.christmass.user.User;
 import pl.coderslab.christmass.user.UserRepository;
 import pl.coderslab.christmass.user.UserService;
 
@@ -26,9 +24,11 @@ public class SantaController {
     private UserService userService;
 
 
-    @GetMapping("/becomeSanta")
-    public String getSanta() {
-        santaService.joinInPairs(userService.findAll());
+    @GetMapping("/becomeSanta/{userId}")
+    public String getSanta(@PathVariable Long userId, Model model) {
+        User user = userService.findById(userId);
+model.addAttribute(user);
+//        santaService.joinInPairs(userService.findAll());
         return "santa";
     }
 
