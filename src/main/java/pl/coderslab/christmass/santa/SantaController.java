@@ -27,10 +27,15 @@ public class SantaController {
     @GetMapping("/becomeSanta/{userId}")
     public String getSanta(@PathVariable Long userId, Model model) {
         User user = userService.findById(userId);
-model.addAttribute(user);
-//        santaService.joinInPairs(userService.findAll());
-        return "santa";
+        if (user != null) {
+            model.addAttribute("user", user);
+            return "santa";
+        } else {
+            return "home";
+        }
     }
+//        santaService.joinInPairs(userService.findAll());
+
 
     @ModelAttribute("santas")
     public List<Santa> getSantas() {

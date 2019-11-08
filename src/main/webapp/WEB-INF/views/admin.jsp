@@ -49,29 +49,51 @@
                 <c:forEach items="${users}" var="user">
                     <tr>
                         <td>${user.fullName}</td>
-                        <td><c:choose>
-                            <c:when test ="${user.hasPaid==true}">
-                                Paid
-                            </c:when>
-                            <c:when test ="${user.hasPaid==false}">
-                                Not
-                            </c:when>
-                        </c:choose>
-                        </td>
-                        <th>
+                        <td>
                             <c:choose>
-                                <c:when test = "${user.listOfPresents!=null}">
-                                    Created
+                                <c:when test="${user.hasPaid==true}">
+                                    Paid
                                 </c:when>
-                                <c:when test = "${user.listOfPresents==null}">
+                                <c:when test="${user.hasPaid==false}">
                                     Not
                                 </c:when>
                             </c:choose>
-                        </th>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${user.status=='paid'}">
+                                    Paid
+                                </c:when>
+                                <c:when test="${user.status=='notpaid'}">
+                                    Notpaid
+                                </c:when>
+                                <c:when test="${user.status=='ready'}">
+                                    Ready
+                                </c:when>
+                                <c:when test="${user.status=='santa'}">
+                                    Santa
+                                </c:when>
+                            </c:choose>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${user.listOfPresents.size()>0}">
+                                    Created
+                                </c:when>
+                                <c:otherwise>
+                                    Not
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
                         <td>
                             <a class="btn btn-primary" href="/admin/hasPaid/${user.id}">Change</a>
-                            <a class="btn btn-danger" href="#" onclick="confirmDelete(${user.id}, '${user.fullName}')">Delete person</a>
-                            <a class="btn btn-warning" href="/user/becomeSanta/${user.id}">Draw Santa</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-warning" href="/becomeSanta/${user.id}">Draw Santa</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" href="#" onclick="confirmDelete(${user.id}, '${user.fullName}')">
+                                Delete person</a>
                         </td>
                     </tr>
                 </c:forEach>
