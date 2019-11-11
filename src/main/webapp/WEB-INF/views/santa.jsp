@@ -24,27 +24,35 @@
                 Become santa!
 
                 <c:choose>
-                    <c:when test ="${user.status=='notpaid'}">
+                    <c:when test="${user.status=='notpaid'}">
                         <h5><spring:message code="pl.coderslab.christmass.notpaid.1"/></h5>
                         <h5><spring:message code="pl.coderslab.christmass.notpaid.2"/></h5>
                         <h5><spring:message code="pl.coderslab.christmass.notpaid.3"/></h5>
                     </c:when>
-                    <c:when test ="${user.status=='paid'}">
+                    <c:when test="${user.status=='paid'}">
                         <h5><spring:message code="pl.coderslab.christmass.paid.1"/></h5>
                         <h5><spring:message code="pl.coderslab.christmass.paid.2"/></h5>
                         <h5><spring:message code="pl.coderslab.christmass.paid.3"/></h5>
                     </c:when>
-                    <c:when test ="${user.status=='ready'}">
+                    <c:when test="${user.status=='ready'}">
                         <h5><spring:message code="pl.coderslab.christmass.ready.1"/></h5>
                         <h5><spring:message code="pl.coderslab.christmass.ready.2"/></h5>
                         <td>
-                            <a class="btn btn-group-toggle" href="/becomeSanta/${user.id}">Draw Santa</a>
-                        </td></btn>
+                            <btn>
+                                <a class="btn btn-group-toggle" href="/user/becomeSanta/${user.id}">Become someone's
+                                    Santa</a>
+                            </btn>
+                        </td>
                     </c:when>
-                    <c:when test ="${user.status=='santa'}">
-                        <h5><spring:message code="pl.coderslab.christmass.santa.1"/></h5>
-                        <h5><spring:message code="pl.coderslab.christmass.santa.2"/></h5>
-                        <h5><spring:message code="pl.coderslab.christmass.santa.3"/></h5>
+                    <c:when test="${user.status=='santa'}">
+                        <h5><spring:message code="pl.coderslab.christmass.santa.1"/>
+                        <c:out value="${santaPair.get(user.id)}"></c:out>
+                        <spring:message code="pl.coderslab.christmass.santa.2"/></h5>
+                        <c:if test="${presents.contains(user.id)}">
+                            <h5><spring:message code="pl.coderslab.christmass.santa.3"/></h5>
+<%--                            <c:out value="${presents.description(user.id)}"></c:out>--%>
+                        </c:if>
+
                     </c:when>
 
                 </c:choose>

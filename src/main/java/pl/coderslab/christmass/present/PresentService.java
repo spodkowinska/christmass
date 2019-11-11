@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class PresentService {
@@ -32,5 +34,7 @@ public class PresentService {
         this.presentRepository.deleteById(id);
     }
 
-
+    public List<Present> findAll() {
+        return this.presentRepository.findAll();
+    }
 }

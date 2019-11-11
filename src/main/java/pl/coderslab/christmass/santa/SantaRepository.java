@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface SantaRepository extends JpaRepository<Santa, Long> {
 
-    List <Santa> findAll();
+    List<Santa> findAll();
 
+    Santa getByGiversId(Long id);
 }

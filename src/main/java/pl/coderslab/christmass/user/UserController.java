@@ -10,6 +10,8 @@ import pl.coderslab.christmass.present.PresentService;
 import pl.coderslab.christmass.santa.SantaService;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -30,11 +32,11 @@ public class UserController {
         return "home";
     }
 
-    @GetMapping("/setSanta/{userid}")
-    public String setSanta(@PathVariable Long userId){
-        userService.setSantaStatus(userId);
-        return "redirect:../home";
-    }
+//    @GetMapping("/setSanta/{userid}")
+//    public String setSanta(@PathVariable Long userId) {
+//        userService.setSantaStatus(userId);
+//        return "redirect:../home";
+//    }
 
     @GetMapping("/addPresent")
     public String addPresent(Model model) {
@@ -50,7 +52,7 @@ public class UserController {
     @PostMapping("/addPresent")
     public String addPresentForm(@Valid @ModelAttribute Present present1,
                                  @Valid @ModelAttribute Present present2,
-                                 @Valid @ModelAttribute Present present3, BindingResult result){
+                                 @Valid @ModelAttribute Present present3, BindingResult result) {
         if (result.hasErrors()) {
             return "presentAdd";
         }
@@ -71,6 +73,25 @@ public class UserController {
         }
     }
 
+    @GetMapping("/becomeSanta/{userId}")
+    public String becomeSanta(@PathVariable Long userId, Model model) {
+        User user = userService.findById(userId);
+        user.setStatus("santa");
+        userService.update(user);
+        return "redirect:../santa/" + userId;
+    }
+//TODO cannot create as long as pairs don't exist
+    @ModelAttribute("santaPair")
+    public Map<Long, String> santaPair() {
+        return userService.userIdUsersSanta();
+    }
+
+    @ModelAttribute("presents")
+    public List<Present> presents(){
+        return presentService.findAll();
+    }
+}
+
 //    @GetMapping("/hasPaid/{userId}")
 //    public String hasPaid(@PathVariable)
-}
+

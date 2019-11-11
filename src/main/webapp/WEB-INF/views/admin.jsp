@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: sandracoderslab
@@ -24,7 +25,11 @@
     </script>
 </head>
 <body>
-
+<sec:authorize access="isAuthenticated()">
+<form action="<c:url value="/logout"/>" method="post">
+    <input class="fa fa-id-badge" type="submit" value="Wyloguj">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
 <div class="container">
 
     <header>Users</header>
@@ -40,25 +45,25 @@
             <table class="table table-hover">
                 <tr>
                     <th>Person</th>
-                    <th>Has paid</th>
+                    <th>Change paid status</th>
                     <th>Status</th>
                     <th>Presents</th>
-                    <th>Change paid status</th>
                     <th>Change user status</th>
                     <th>Delete user</th>
                 </tr>
                 <c:forEach items="${users}" var="user">
-                    
+
                     <tr>
                         <td>${user.fullName}</td>
+
                         <td>
                             <c:choose>
-                                <c:when test="${user.hasPaid==true}">
-                                    Paid
+                                <c:when test="${user.hasPaid=='true'}">
+                                    <a class="btn btn-primary" href="/admin/hasPaid/${user.id}">Change to unpaid</a>
                                 </c:when>
-                                <c:when test="${user.hasPaid==false}">
-                                    Not
-                                </c:when>
+                                <c:otherwise>
+                                    <a class="btn btn-danger" href="/admin/hasPaid/${user.id}">Change to paid</a>
+                                </c:otherwise>
                             </c:choose>
                         </td>
                         <td>
@@ -88,28 +93,21 @@
                             </c:choose>
                         </td>
                         <td>
-                            <a class="btn btn-primary" href="/admin/hasPaid/${user.id}">Change</a>
-                        </td>
-                        <td>
 
-<%--                                <form:select path="user.status" items="${status}" itemLabel="status" itemValue="status"/><br>--%>
-
-<%--                                <form:errors path="user.status" element="div" cssStyle="color:red"/>--%>
                         </td>
-<%--                        <td>--%>
-<%--                            <a class="btn btn-warning" href="user/santa/${user.id}">Draw Santa</a>--%>
-<%--                        </td>--%>
                         <td>
                             <a class="btn btn-danger" href="#" onclick="confirmDelete(${user.id}, '${user.fullName}')">
                                 Delete</a>
                         </td>
                     </tr>
                 </c:forEach>
+
             </table>
+            <a class="btn btn-danger" href="/admin/joinInPairs">Join in Pairs!</a>
         </div>
     </div>
 
 </div>
-
+</sec:authorize>
 </body>
 </html>

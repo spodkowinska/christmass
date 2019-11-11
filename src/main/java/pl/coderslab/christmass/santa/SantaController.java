@@ -34,7 +34,7 @@ public class SantaController {
             return "home";
         }
     }
-//        santaService.joinInPairs(userService.findAll());
+
 
 
     @ModelAttribute("santas")

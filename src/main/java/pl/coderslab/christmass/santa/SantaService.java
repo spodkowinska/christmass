@@ -47,14 +47,7 @@ public class SantaService {
             randomGiver.put(counter, user.getId());
             counter++;
         }
-
-//        1,2,3,4,5,6,7
-        //3,4,5,6,7,1,2
-//Integer i = 0;
-
-
             for (int i = 0; i < randomGiver.size(); i++) {
-
                 if (i + randomInt >= randomGiver.size()) {
                     giverGetter.put(randomGiver.get(i), randomGiver.get(i - randomGiver.size() + randomInt));
                 }else{

@@ -1,11 +1,13 @@
 package pl.coderslab.christmass.admin;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.christmass.santa.Santa;
+import pl.coderslab.christmass.santa.SantaService;
 import pl.coderslab.christmass.user.User;
 import pl.coderslab.christmass.user.UserService;
 
@@ -21,14 +23,19 @@ public class AdminController {
 
     private AdminService adminService;
     private UserService userService;
+    private SantaService santaService;
 
-    public AdminController(AdminService adminService, UserService userService) {
+    @Autowired
+    public AdminController(AdminService adminService, UserService userService, SantaService santaService) {
         this.adminService = adminService;
         this.userService = userService;
+        this.santaService = santaService;
     }
+
 //@TODO change status list
 //@TODO status as enum
 //@TODO user controller with all logics
+    //@TODO sending email to user that presents are not created
 
     @GetMapping("/usersList")
     private String usersList(){
@@ -66,6 +73,13 @@ public class AdminController {
     public String delete(@PathVariable Long id) {
         userService.delete(id);
         return "redirect:../usersList";
+    }
+
+    @GetMapping("/joinInPairs")
+    public String joinInPairs(){
+        santaService.joinInPairs(userService.findByStatus("paid"));
+        userService.findByStatus("paid").stream().forEach(n->userService.changeStatus("ready", n.getId()));
+        return "redirect:usersList";
     }
 
 

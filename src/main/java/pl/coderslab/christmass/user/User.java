@@ -37,6 +37,19 @@ public class User implements Serializable {
 
     private boolean hasPaid;
 
+    private boolean isAdmin;
+
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+
+
+
     public String getStatus() {
         return status;
     }
