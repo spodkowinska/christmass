@@ -38,15 +38,6 @@ public class homeController {
 
     @GetMapping("/registration")
     public String register(Model model) {
-//        User user = new User();
-//        user.setUsername("admin2");
-//        user.setPassword("admin2");
-//        user.setFirstName("admin2");
-//        user.setLastName("admin2");
-//        userService.saveUser(user);
-//
-//        return "redirect:admin/usersList";
-//    }
         User user = new User();
         model.addAttribute("user", user);
         return "register";

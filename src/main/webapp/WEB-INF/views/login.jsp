@@ -13,14 +13,14 @@
   <title>Login</title>
 
   <!-- Custom fonts for this template-->
-  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<%--  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
 
-  <!-- Custom styles for this template-->
-  <link href="../css/sb-admin.css" rel="stylesheet">
+<%--  <!-- Custom styles for this template-->--%>
+<%--  <link href="../css/sb-admin.css" rel="stylesheet">--%>
 
 </head>
-<body>
-<%--<body class="bg-dark">--%>
+
+<body class="bg-dark">
 <%--<form:form modelAttribute="user" method="post">--%>
 <%--  <div class="container">--%>
 <%--    <div class="card card-login mx-auto mt-5">--%>
@@ -29,7 +29,7 @@
 <%--        <form>--%>
 <%--          <div class="form-group">--%>
 <%--            <div class="form-label-group">--%>
-<%--              <form:input path="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"/>--%>
+<%--              <form:input path="username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"/>--%>
 <%--              <label for="inputEmail">Email address</label>--%>
 <%--            </div>--%>
 <%--          </div>--%>
@@ -72,6 +72,6 @@
   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 
-</body>
 
+</body>
 </html>
