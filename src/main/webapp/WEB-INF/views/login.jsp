@@ -19,51 +19,58 @@
   <link href="../css/sb-admin.css" rel="stylesheet">
 
 </head>
+<body>
+<%--<body class="bg-dark">--%>
+<%--<form:form modelAttribute="user" method="post">--%>
+<%--  <div class="container">--%>
+<%--    <div class="card card-login mx-auto mt-5">--%>
+<%--      <div class="card-header">Login</div>--%>
+<%--      <div class="card-body">--%>
+<%--        <form>--%>
+<%--          <div class="form-group">--%>
+<%--            <div class="form-label-group">--%>
+<%--              <form:input path="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"/>--%>
+<%--              <label for="inputEmail">Email address</label>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <div class="form-group">--%>
+<%--            <div class="form-label-group">--%>
+<%--              <form:input path="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="required"/>--%>
+<%--              <label for="inputPassword">Password</label>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <div class="form-group">--%>
+<%--            <div class="checkbox">--%>
+<%--              <label>--%>
+<%--                <input type="checkbox" value="remember-me">--%>
+<%--                Remember Password--%>
+<%--              </label>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--          <a class="btn btn-primary btn-block" href="/user/home">Login</a>--%>
+<%--        </form>--%>
+<%--        <div class="text-center">--%>
+<%--          <a class="d-block small mt-3" href="/register">Register an Account</a>--%>
+<%--          <a class="d-block small" href="/forgotPassword">Forgot Password?</a>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--    </div>--%>
+<%--  </div>--%>
+<%--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+<%--</form:form>--%>
+<%--  <!-- Bootstrap core JavaScript-->--%>
+<%--  <script src="../vendor/jquery/jquery.min.js"></script>--%>
+<%--  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
 
-<body class="bg-dark">
-<form:form modelAttribute="user" method="post">
-  <div class="container">
-    <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Login</div>
-      <div class="card-body">
-        <form>
-          <div class="form-group">
-            <div class="form-label-group">
-              <form:input path="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"/>
-              <label for="inputEmail">Email address</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-label-group">
-              <form:input path="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="required"/>
-              <label for="inputPassword">Password</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me">
-                Remember Password
-              </label>
-            </div>
-          </div>
-          <a class="btn btn-primary btn-block" href="/user/home">Login</a>
-        </form>
-        <div class="text-center">
-          <a class="d-block small mt-3" href="/register">Register an Account</a>
-          <a class="d-block small" href="/forgotPassword">Forgot Password?</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<%--  <!-- Core plugin JavaScript-->--%>
+<%--  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>--%>
+
+<form method="post">
+  <div><label> User Name : <input type="text" name="username"/> </label></div>
+  <div><label> Password: <input type="password" name="password"/> </label></div>
+  <div><input type="submit" value="Sign In"/></div>
   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-</form:form>
-  <!-- Bootstrap core JavaScript-->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+</form>
 
 </body>
 

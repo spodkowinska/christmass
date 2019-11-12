@@ -4,16 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.christmass.santa.Santa;
 import pl.coderslab.christmass.santa.SantaService;
 import pl.coderslab.christmass.user.User;
-import pl.coderslab.christmass.user.UserService;
+import pl.coderslab.christmass.user.UserServiceTemp;
 
 import javax.validation.Valid;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,11 +19,11 @@ import java.util.List;
 public class AdminController {
 
     private AdminService adminService;
-    private UserService userService;
+    private UserServiceTemp userService;
     private SantaService santaService;
 
     @Autowired
-    public AdminController(AdminService adminService, UserService userService, SantaService santaService) {
+    public AdminController(AdminService adminService, UserServiceTemp userService, SantaService santaService) {
         this.adminService = adminService;
         this.userService = userService;
         this.santaService = santaService;

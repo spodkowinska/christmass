@@ -1,5 +1,6 @@
 package pl.coderslab.christmass.user;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import pl.coderslab.christmass.present.Present;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -23,9 +25,12 @@ public class User implements Serializable {
     @NotBlank
     private String lastName;
 
+
+
     @NotBlank
-    @Email
-    private String email;
+    @UniqueElements
+//    @Email
+    private String username;
 
     @NotBlank
     private String password;
@@ -39,17 +44,28 @@ public class User implements Serializable {
 
     private boolean isAdmin;
 
-    public boolean getIsAdmin() {
-        return isAdmin;
+
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setIsAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
-
-
+    public void setUsername(String username) {
+        this.username = username;
+    }
     public String getStatus() {
         return status;
     }
@@ -62,7 +78,13 @@ public class User implements Serializable {
         return firstName + " " + lastName;
     }
 
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
 
+    public void setIsAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 
     public Long getId() {
         return id;
@@ -87,14 +109,14 @@ public class User implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
     public String getPassword() {
         return password;

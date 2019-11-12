@@ -11,7 +11,6 @@ import pl.coderslab.christmass.santa.SantaService;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -62,24 +61,24 @@ public class UserController {
         return "redirect:/home";
     }
 
-    @GetMapping("/santa/{userId}")
-    public String getSanta(@PathVariable Long userId, Model model) {
-        User user = userService.findById(userId);
-        if (user != null) {
-            model.addAttribute("user", user);
-            return "santa";
-        } else {
-            return "home";
-        }
-    }
-
-    @GetMapping("/becomeSanta/{userId}")
-    public String becomeSanta(@PathVariable Long userId, Model model) {
-        User user = userService.findById(userId);
-        user.setStatus("santa");
-        userService.update(user);
-        return "redirect:../santa/" + userId;
-    }
+//    @GetMapping("/santa/{userId}")
+//    public String getSanta(@PathVariable Long userId, Model model) {
+//        User user = userService.findById(userId);
+//        if (user != null) {
+//            model.addAttribute("user", user);
+//            return "santa";
+//        } else {
+//            return "home";
+////        }
+//    }
+//
+//    @GetMapping("/becomeSanta/{userId}")
+//    public String becomeSanta(@PathVariable Long userId, Model model) {
+//        User user = userService.findById(userId);
+//        user.setStatus("santa");
+//        userService.update(user);
+//        return "redirect:../santa/" + userId;
+//    }
 //TODO cannot create as long as pairs don't exist
 //    @ModelAttribute("santaPair")
 //    public Map<Long, String> santaPair() {
@@ -90,8 +89,19 @@ public class UserController {
     public List<Present> presents(){
         return presentService.findAll();
     }
-}
+
 
 //    @GetMapping("/hasPaid/{userId}")
 //    public String hasPaid(@PathVariable)
 
+    @GetMapping("/create-user")
+    @ResponseBody
+    public String createUser() {
+        User user = new User();
+        user.setFirstName("ania");
+        user.setLastName("pola");
+        user.setUsername("admin");
+        user.setPassword("admin");
+        userService.saveUser(user);
+        return "admin";
+    }   }

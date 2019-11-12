@@ -3,12 +3,9 @@ package pl.coderslab.christmass.admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.coderslab.christmass.present.PresentRepository;
-import pl.coderslab.christmass.present.PresentService;
 import pl.coderslab.christmass.santa.SantaRepository;
-import pl.coderslab.christmass.santa.SantaService;
 import pl.coderslab.christmass.user.User;
 import pl.coderslab.christmass.user.UserRepository;
-import pl.coderslab.christmass.user.UserService;
 
 import java.util.List;
 

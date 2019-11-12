@@ -5,12 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.christmass.user.User;
-import pl.coderslab.christmass.user.UserService;
+import pl.coderslab.christmass.user.UserServiceTemp;
 
 import javax.validation.Valid;
 
@@ -19,10 +16,10 @@ import javax.validation.Valid;
 @Transactional
 public class homeController {
 
-    private UserService userService;
+    private UserServiceTemp userService;
 
     @Autowired
-    public homeController(UserService userService) {
+    public homeController(UserServiceTemp userService) {
         this.userService = userService;
     }
 
@@ -48,6 +45,11 @@ public class homeController {
         }
         userService.create(user);
         return "redirect:login";
+    }
+
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public String login() {
+        return "login";
     }
 
 //    @GetMapping("/login")

@@ -23,4 +23,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     void changeStatus(String status, Long userId);
 
     List<User> findByStatus(String status);
+
+    User findByUsername(String username);
 }
