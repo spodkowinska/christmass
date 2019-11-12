@@ -50,20 +50,24 @@ public class homeController {
         return "redirect:login";
     }
 
-    @GetMapping("/login")
-    public String login(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
-        return "login";
-    }
+//    @GetMapping("/login")
+//    public String login(Model model) {
+//        User user = new User();
+//        model.addAttribute("user", user);
+//        return "login";
+//    }
+//
+//    @PostMapping("/login")
+//    public String loginForm(@Valid @ModelAttribute User user, BindingResult result) {
+//        if (result.hasErrors()) {
+//            return "login";
+//        }
+//        return "redirect:home";
+//    }
 
-    @PostMapping("/login")
-    public String loginForm(@Valid @ModelAttribute User user, BindingResult result) {
-        if (result.hasErrors()) {
-            return "login";
-        }
-
-        return "redirect:home";
+    @GetMapping ("/thankYou")
+    public String thankYou(){
+        return "thankYou";
     }
 
 

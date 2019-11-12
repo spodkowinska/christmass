@@ -81,10 +81,10 @@ public class UserController {
         return "redirect:../santa/" + userId;
     }
 //TODO cannot create as long as pairs don't exist
-    @ModelAttribute("santaPair")
-    public Map<Long, String> santaPair() {
-        return userService.userIdUsersSanta();
-    }
+//    @ModelAttribute("santaPair")
+//    public Map<Long, String> santaPair() {
+//        return userService.userIdUsersSanta();
+//    }
 
     @ModelAttribute("presents")
     public List<Present> presents(){

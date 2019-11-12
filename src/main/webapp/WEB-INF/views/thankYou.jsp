@@ -11,6 +11,6 @@
     <title>Thank You</title>
 </head>
 <body>
-
+Thank you for using Christmass Planner
 </body>
 </html>
