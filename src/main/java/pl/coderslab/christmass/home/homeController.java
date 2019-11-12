@@ -1,12 +1,17 @@
 package pl.coderslab.christmass.home;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.christmass.user.User;
+import pl.coderslab.christmass.user.UserService;
 import pl.coderslab.christmass.user.UserServiceTemp;
 
 import javax.validation.Valid;
@@ -16,10 +21,10 @@ import javax.validation.Valid;
 @Transactional
 public class homeController {
 
-    private UserServiceTemp userService;
+    private UserService userService;
 
     @Autowired
-    public homeController(UserServiceTemp userService) {
+    public homeController(UserService userService) {
         this.userService = userService;
     }
 
@@ -31,33 +36,47 @@ public class homeController {
     //TODO passwords need to be the same
     //TODO password needs to be encrypted
 
-    @GetMapping("/register")
-    public String register(@Valid Model model) {
+    @GetMapping("/registration")
+    public String register(Model model) {
+//        User user = new User();
+//        user.setUsername("admin2");
+//        user.setPassword("admin2");
+//        user.setFirstName("admin2");
+//        user.setLastName("admin2");
+//        userService.saveUser(user);
+//
+//        return "redirect:admin/usersList";
+//    }
         User user = new User();
         model.addAttribute("user", user);
         return "register";
     }
 
-    @PostMapping("/register")
-    public String registerForm(@Valid @ModelAttribute User user, BindingResult result) {
+    @PostMapping("/registration")
+    public String registerForm( @Valid @ModelAttribute User user, BindingResult result) {
         if (result.hasErrors()) {
             return "register";
         }
-        userService.create(user);
-        return "redirect:login";
+        userService.saveUser(user);
+        return "redirect:/user/home";
     }
 
-    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
-    public String login() {
-        return "login";
-    }
+//        userService.saveUser(user);
+//        return "redirect:login";
+//    }
 
-//    @GetMapping("/login")
-//    public String login(Model model) {
-//        User user = new User();
-//        model.addAttribute("user", user);
+
+//    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+//    public String login() {
 //        return "login";
 //    }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "login";
+    }
 //
 //    @PostMapping("/login")
 //    public String loginForm(@Valid @ModelAttribute User user, BindingResult result) {
@@ -67,8 +86,8 @@ public class homeController {
 //        return "redirect:home";
 //    }
 
-    @GetMapping ("/thankYou")
-    public String thankYou(){
+    @GetMapping("/thankYou")
+    public String thankYou() {
         return "thankYou";
     }
 
@@ -77,6 +96,13 @@ public class homeController {
     public String forgotPassword() {
         return "forgotPassword";
     }
+
+//    @GetMapping("/whoami")
+//    @ResponseBody
+//    public String whoami(@AuthenticationPrincipal UserDetails customUser) {
+//        log.info("customUser class {} " , customUser.getClass());
+//        return "You are logged as " + customUser;
+//    }
 
 
 }

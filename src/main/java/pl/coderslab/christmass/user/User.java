@@ -20,15 +20,13 @@ public class User implements Serializable {
     private Long id;
 
     @NotBlank
-    private String firstName;
+    private String firstname;
 
     @NotBlank
-    private String lastName;
+    private String lastname;
 
-
-
+//@TODO Add unique to email
     @NotBlank
-    @UniqueElements
 //    @Email
     private String username;
 
@@ -44,12 +42,13 @@ public class User implements Serializable {
 
     private boolean isAdmin;
 
-
-
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+
+
 
     public Set<Role> getRoles() {
         return roles;
@@ -75,7 +74,7 @@ public class User implements Serializable {
     }
 
     public String getFullName(){
-        return firstName + " " + lastName;
+        return firstname + " " + lastname;
     }
 
     public boolean getIsAdmin() {
@@ -95,19 +94,19 @@ public class User implements Serializable {
     }
 
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstname = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastName;
     }
 //
 //    public String getEmail() {

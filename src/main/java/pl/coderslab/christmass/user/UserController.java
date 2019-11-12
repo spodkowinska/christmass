@@ -94,14 +94,4 @@ public class UserController {
 //    @GetMapping("/hasPaid/{userId}")
 //    public String hasPaid(@PathVariable)
 
-    @GetMapping("/create-user")
-    @ResponseBody
-    public String createUser() {
-        User user = new User();
-        user.setFirstName("ania");
-        user.setLastName("pola");
-        user.setUsername("admin");
-        user.setPassword("admin");
-        userService.saveUser(user);
-        return "admin";
-    }   }
+    }

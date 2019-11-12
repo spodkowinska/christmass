@@ -20,7 +20,7 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.findByUserName(username);
         if (user == null) {throw new UsernameNotFoundException(username); }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
@@ -29,4 +29,15 @@ public class SpringDataUserDetailsService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(), user.getPassword(), grantedAuthorities);
     }
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) {
+//        User user = userService.findByUserName(username);
+//        if (user == null) {throw new UsernameNotFoundException(username); }
+//        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+//        user.getRoles().forEach(r ->
+//                grantedAuthorities.add(new SimpleGrantedAuthority(r.getName())));
+//        return new CurrentUser(user.getUsername(),user.getPassword(),
+//                grantedAuthorities, user);;
+//    }
 }
