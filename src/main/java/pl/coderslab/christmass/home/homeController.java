@@ -12,7 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.christmass.user.User;
 import pl.coderslab.christmass.user.UserService;
-import pl.coderslab.christmass.user.UserServiceTemp;
+import pl.coderslab.christmass.user.UserServiceImpl;
 
 import javax.validation.Valid;
 
@@ -52,23 +52,13 @@ public class homeController {
         return "redirect:/user/home";
     }
 
-//        userService.saveUser(user);
-//        return "redirect:login";
-//    }
-
-
-//    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
-//    public String login() {
-//        return "login";
-//    }
-
     @GetMapping("/login")
     public String login(Model model) {
         User user = new User();
         model.addAttribute("user", user);
         return "login";
     }
-//
+
 //    @PostMapping("/login")
 //    public String loginForm(@Valid @ModelAttribute User user, BindingResult result) {
 //        if (result.hasErrors()) {
@@ -81,7 +71,6 @@ public class homeController {
     public String thankYou() {
         return "thankYou";
     }
-
 
     @GetMapping("/forgotpassword")
     public String forgotPassword() {

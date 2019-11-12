@@ -5,7 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.christmass.user.User;
-import pl.coderslab.christmass.user.UserServiceTemp;
+import pl.coderslab.christmass.user.UserServiceImpl;
+import pl.coderslab.christmass.user.UserServiceImpl;
 
 import java.util.List;
 
@@ -14,13 +15,13 @@ import java.util.List;
 public class SantaController {
 
     @Autowired
-    public SantaController(SantaService santaService, UserServiceTemp userService) {
+    public SantaController(SantaService santaService, UserServiceImpl userService) {
         this.santaService = santaService;
         this.userService = userService;
     }
 
     private SantaService santaService;
-    private UserServiceTemp userService;
+    private UserServiceImpl userService;
 
 
     @GetMapping("/santa/{userId}")

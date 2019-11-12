@@ -7,7 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.christmass.santa.SantaService;
 import pl.coderslab.christmass.user.User;
-import pl.coderslab.christmass.user.UserServiceTemp;
+import pl.coderslab.christmass.user.UserServiceImpl;
 
 import javax.validation.Valid;
 
@@ -19,11 +19,11 @@ import java.util.List;
 public class AdminController {
 
     private AdminService adminService;
-    private UserServiceTemp userService;
+    private UserServiceImpl userService;
     private SantaService santaService;
 
     @Autowired
-    public AdminController(AdminService adminService, UserServiceTemp userService, SantaService santaService) {
+    public AdminController(AdminService adminService, UserServiceImpl userService, SantaService santaService) {
         this.adminService = adminService;
         this.userService = userService;
         this.santaService = santaService;
@@ -50,7 +50,7 @@ public class AdminController {
         if (result.hasErrors()) {
             return "addUser";
         }
-        userService.create(user);
+        userService.saveUser(user);
         return "redirect:usersList";
     }
 

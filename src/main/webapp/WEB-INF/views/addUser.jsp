@@ -23,7 +23,7 @@
 
         <div class="card">
             <div class="card-body">
-                <a href="/admin/userslist" class="btn btn-primary">UsersList</a>
+                <a href="/admin/usersList" class="btn btn-primary">UsersList</a>
             </div>
         </div>
 
@@ -56,8 +56,8 @@
 
                         <div class="form-group col-md-6">
                             <label for="email">Email</label>
-                            <form:input path="email" class="form-control" id="email"/>
-                            <form:errors path="email" element="div" cssClass="error"/>
+                            <form:input path="username" class="form-control" id="email"/>
+                            <form:errors path="username" element="div" cssClass="error"/>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="password">Password</label>
@@ -75,7 +75,7 @@
         </div>
 
     </div>
-
+</div>
     <a href="/admin">Admin main site</a>
 </body>
 </html>

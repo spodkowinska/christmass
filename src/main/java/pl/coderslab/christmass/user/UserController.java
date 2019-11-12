@@ -15,12 +15,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    private UserService userService;
+    private UserServiceImpl userService;
     private PresentService presentService;
     private SantaService santaService;
 
     @Autowired
-    public UserController(UserService userService, PresentService presentService, SantaService santaService) {
+    public UserController(UserServiceImpl userService, PresentService presentService, SantaService santaService) {
         this.userService = userService;
         this.presentService = presentService;
         this.santaService = santaService;
