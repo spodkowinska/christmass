@@ -45,9 +45,8 @@
                 <tr>
                     <th>Person</th>
                     <th>Change paid status</th>
-                    <th>Status</th>
+                    <th>Unpaid/Paid/Ready/Santa</th>
                     <th>Presents</th>
-                    <th>Change user status</th>
                     <th>Delete user</th>
                 </tr>
                 <c:forEach items="${users}" var="user">
@@ -58,41 +57,38 @@
                         <td>
                             <c:choose>
                                 <c:when test="${user.hasPaid=='true'}">
-                                    <a class="btn btn-primary" href="/admin/hasPaid/${user.id}">Change to unpaid</a>
+                                    <a class="btn btn-success" href="/admin/hasPaid/${user.id}">Paid</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a class="btn btn-danger" href="/admin/hasPaid/${user.id}">Change to paid</a>
+                                    <a class="btn btn-warning" href="/admin/hasPaid/${user.id}">Unpaid</a>
                                 </c:otherwise>
                             </c:choose>
                         </td>
                         <td>
                             <c:choose>
-                                <c:when test="${user.status=='paid'}">
-                                    Paid
+                                <c:when test="${user.status eq \"unpaid\"}">
+                                    <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">Unpaid</a>
                                 </c:when>
-                                <c:when test="${user.status=='notpaid'}">
-                                    Notpaid
+                                <c:when test="${user.status eq \"paid\"}">
+                                    <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">Paid</a>
                                 </c:when>
-                                <c:when test="${user.status=='ready'}">
-                                    Ready
+                                <c:when test="${user.status eq \"ready\"}">
+                                    <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">Ready</a>
                                 </c:when>
-                                <c:when test="${user.status=='santa'}">
-                                    Santa
+                                <c:when test="${user.status eq \"santa\"}">
+                                    <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">Santa</a>
                                 </c:when>
                             </c:choose>
                         </td>
                         <td>
                             <c:choose>
                                 <c:when test="${user.listOfPresents.size()>0}">
-                                    Created
+                                    <p class="btn btn-success" >Created</p>
                                 </c:when>
                                 <c:otherwise>
-                                    Not
+                                    <p class="btn btn-warning" >Not yet</p>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                        <td>
-
                         </td>
                         <td>
                             <a class="btn btn-danger" href="#" onclick="confirmDelete(${user.id}, '${user.fullName}')">

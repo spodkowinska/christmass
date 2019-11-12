@@ -1,6 +1,7 @@
 package pl.coderslab.christmass.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,6 +11,7 @@ import pl.coderslab.christmass.present.PresentService;
 import pl.coderslab.christmass.santa.SantaService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -51,10 +53,12 @@ public class UserController {
     @PostMapping("/addPresent")
     public String addPresentForm(@Valid @ModelAttribute Present present1,
                                  @Valid @ModelAttribute Present present2,
-                                 @Valid @ModelAttribute Present present3, BindingResult result) {
-        if (result.hasErrors()) {
-            return "presentAdd";
-        }
+                                 @Valid @ModelAttribute Present present3,
+                                 @AuthenticationPrincipal CurrentUser customUser) {
+        User entityUser = customUser.getUser();
+        present1.setUser(entityUser);
+//        present2.setUser(entityUser);
+//        present3.setUser(entityUser);
         presentService.create(present1);
         presentService.create(present2);
         presentService.create(present3);
@@ -86,7 +90,7 @@ public class UserController {
 //    }
 
     @ModelAttribute("presents")
-    public List<Present> presents(){
+    public List<Present> presents() {
         return presentService.findAll();
     }
 
@@ -94,4 +98,4 @@ public class UserController {
 //    @GetMapping("/hasPaid/{userId}")
 //    public String hasPaid(@PathVariable)
 
-    }
+}

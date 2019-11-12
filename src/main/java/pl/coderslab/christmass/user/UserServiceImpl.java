@@ -2,8 +2,11 @@ package pl.coderslab.christmass.user;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.christmass.santa.Santa;
 import pl.coderslab.christmass.santa.SantaRepository;
 
@@ -26,6 +29,7 @@ public class UserServiceImpl implements UserService {
         this.santaRepository = santaRepository;
     }
 
+
     @Override
     public User findByUserName(String username) {
         return userRepository.findByUsername(username);
@@ -36,6 +40,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        user.setStatus("unpaid");
         userRepository.save(user);
     }
 
@@ -56,7 +61,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public void setSantaStatus(Long id) {
-        userRepository.setSantaStatus(id);
+        setSantaStatus(id);
     }
 
     public Map<Long, String> userIdUsersSanta() {
@@ -77,4 +82,6 @@ public class UserServiceImpl implements UserService {
     public void changeStatus(String status, Long id){
         userRepository.changeStatus(status, id);
     }
+
+
 }

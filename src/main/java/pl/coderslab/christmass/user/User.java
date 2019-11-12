@@ -40,7 +40,6 @@ public class User implements Serializable {
 
     private boolean hasPaid;
 
-    private boolean isAdmin;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
@@ -75,14 +74,6 @@ public class User implements Serializable {
 
     public String getFullName(){
         return firstname + " " + lastname;
-    }
-
-    public boolean getIsAdmin() {
-        return isAdmin;
-    }
-
-    public void setIsAdmin(boolean admin) {
-        isAdmin = admin;
     }
 
     public Long getId() {

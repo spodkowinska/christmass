@@ -66,6 +66,22 @@ public class AdminController {
         return "redirect:../usersList";
     }
 
+    @GetMapping("/changeStatus/{userId}")
+    public String changeStatus(@PathVariable Long userId){
+        User user = userService.findById(userId);
+        if(user.getStatus().equals("paid")){
+            user.setStatus("ready");
+        }else if(user.getStatus().equals("ready")){
+            user.setStatus("santa");
+        }else if(user.getStatus().equals("santa")){
+            user.setStatus("unpaid");
+        }else if(user.getStatus().equals("unpaid")){
+            user.setStatus("paid");
+        }
+        userService.update(user);
+        return "redirect:../usersList";
+    }
+
     @GetMapping("/deleteUser/{id}")
     public String delete(@PathVariable Long id) {
         userService.delete(id);

@@ -34,7 +34,7 @@ public class homeController {
     }
 
     //TODO passwords need to be the same
-    //TODO password needs to be encrypted
+    //TODO password needs to be encrypted - done
 
     @GetMapping("/registration")
     public String register(Model model) {

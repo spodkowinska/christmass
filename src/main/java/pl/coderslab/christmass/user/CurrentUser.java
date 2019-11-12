@@ -5,13 +5,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 public class CurrentUser extends User {
 
-    private final User user;
-
+    private final pl.coderslab.christmass.user.User user;
     public CurrentUser(String username, String password,
                        Collection<? extends GrantedAuthority> authorities,
-                       User user) {
+                       pl.coderslab.christmass.user.User user) {
         super(username, password, authorities);
         this.user = user;
     }
-    public User getUser() {return user;}
+    public pl.coderslab.christmass.user.User getUser() {return user;}
 }
