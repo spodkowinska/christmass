@@ -14,15 +14,15 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE User u SET u.status ='santa' where u.id = ?1")
+    @Query("UPDATE User u SET u.status ='SANTA' where u.id = ?1")
     void setSantaStatus(Long userId);
 
     @Transactional
     @Modifying
     @Query("UPDATE User u SET u.status = :status where u.id = :userId")
-    void changeStatus(String status, Long userId);
+    void changeStatus(Status status, Long userId);
 
-    List<User> findByStatus(String status);
+    List<User> findByStatus(Status status);
 
     User findByUsername(String username);
 }

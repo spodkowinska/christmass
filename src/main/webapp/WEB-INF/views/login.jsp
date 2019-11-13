@@ -21,7 +21,7 @@
 </head>
 
 <body class="bg-dark">
-<%--<form:form modelAttribute="user" method="post">--%>
+<form:form modelAttribute="user" method="post">
 <%--  <div class="container">--%>
 <%--    <div class="card card-login mx-auto mt-5">--%>
 <%--      <div class="card-header">Login</div>--%>
@@ -29,13 +29,13 @@
 <%--        <form>--%>
 <%--          <div class="form-group">--%>
 <%--            <div class="form-label-group">--%>
-<%--              <form:input path="username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"/>--%>
+<%--              <form:input path="username" name="username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"/>--%>
 <%--              <label for="inputEmail">Email address</label>--%>
 <%--            </div>--%>
 <%--          </div>--%>
 <%--          <div class="form-group">--%>
 <%--            <div class="form-label-group">--%>
-<%--              <form:input path="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="required"/>--%>
+<%--              <form:input path="password" name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="required"/>--%>
 <%--              <label for="inputPassword">Password</label>--%>
 <%--            </div>--%>
 <%--          </div>--%>
@@ -65,13 +65,13 @@
 <%--  <!-- Core plugin JavaScript-->--%>
 <%--  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>--%>
 
-<form method="post">
-  <div><label> User Name : <input type="text" name="username"/> </label></div>
-  <div><label> Password: <input type="password" name="password"/> </label></div>
+<%--<form method="post">--%>
+  <div><label> User Name <form:input path="username" type="text" name="username"/> </label></div>
+  <div><label> Password: <form:input path="password" type="password" name="password"/> </label></div>
   <div><input type="submit" value="Sign In"/></div>
   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
-
+</form:form>
 
 </body>
 </html>

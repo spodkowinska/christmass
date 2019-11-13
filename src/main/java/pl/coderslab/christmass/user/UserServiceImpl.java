@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-        user.setStatus("unpaid");
+        user.setStatus(Status.UNPAID);
         userRepository.save(user);
     }
 
@@ -75,11 +75,11 @@ public class UserServiceImpl implements UserService {
         return userSanta;
     }
 
-    public List <User> findByStatus(String status){
+    public List <User> findByStatus(Status status){
         return userRepository.findByStatus(status);
     }
 
-    public void changeStatus(String status, Long id){
+    public void changeStatus(Status status, Long id){
         userRepository.changeStatus(status, id);
     }
 

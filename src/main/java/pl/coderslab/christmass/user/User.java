@@ -36,10 +36,10 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Present> listOfPresents;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     private boolean hasPaid;
-
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
@@ -52,7 +52,6 @@ public class User implements Serializable {
     public Set<Role> getRoles() {
         return roles;
     }
-
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
@@ -60,15 +59,14 @@ public class User implements Serializable {
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
-    public String getStatus() {
+
+    public Status getStatus() {
         return status;
     }
-
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -79,7 +77,6 @@ public class User implements Serializable {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -87,7 +84,6 @@ public class User implements Serializable {
     public String getFirstName() {
         return firstname;
     }
-
     public void setFirstName(String firstName) {
         this.firstname = firstName;
     }
@@ -95,23 +91,13 @@ public class User implements Serializable {
     public String getLastName() {
         return lastname;
     }
-
     public void setLastName(String lastName) {
         this.lastname = lastName;
     }
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
 
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -119,7 +105,6 @@ public class User implements Serializable {
     public List<Present> getListOfPresents() {
         return listOfPresents;
     }
-
     public void setListOfPresents(List<Present> listOfPresents) {
         this.listOfPresents = listOfPresents;
     }
@@ -127,7 +112,6 @@ public class User implements Serializable {
     public boolean getHasPaid() {
         return hasPaid;
     }
-
     public void setHasPaid(boolean hasPaid) {
         this.hasPaid = hasPaid;
     }

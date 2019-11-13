@@ -39,7 +39,7 @@ public class SantaService {
 
     public void joinInPairs(List<User> users) {
         Random random = new Random();
-        int randomInt = random.nextInt(users.size() - 2) + 2;
+        int randomInt = random.nextInt(users.size() - 1) + 1;
         Integer counter = 0;
         Map<Integer, Long> randomGiver = new HashMap<>();
         Map<Long, Long> giverGetter = new HashMap<>();
@@ -49,7 +49,7 @@ public class SantaService {
         }
             for (int i = 0; i < randomGiver.size(); i++) {
                 if (i + randomInt >= randomGiver.size()) {
-                    giverGetter.put(randomGiver.get(i), randomGiver.get(i - randomGiver.size() + randomInt));
+                    giverGetter.put(randomGiver.get(i), randomGiver.get(i + randomInt - randomGiver.size()));
                 }else{
                 giverGetter.put(randomGiver.get(i), randomGiver.get(i + randomInt));
                 }

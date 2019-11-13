@@ -15,7 +15,7 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     private UserService userService;
 
     @Autowired
-    public void setUserRepository(UserService userService) {
+    public void setUserRepository(UserServiceImpl userService) {
         this.userService = userService;
     }
 

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.christmass.santa.SantaService;
+import pl.coderslab.christmass.user.Status;
 import pl.coderslab.christmass.user.User;
 import pl.coderslab.christmass.user.UserServiceImpl;
 
@@ -36,7 +37,8 @@ public class AdminController {
 
     @GetMapping("/usersList")
     private String usersList(){
-     return "admin";
+
+        return "admin";
     }
 
     @GetMapping("/addUser")
@@ -69,14 +71,14 @@ public class AdminController {
     @GetMapping("/changeStatus/{userId}")
     public String changeStatus(@PathVariable Long userId){
         User user = userService.findById(userId);
-        if(user.getStatus().equals("paid")){
-            user.setStatus("ready");
-        }else if(user.getStatus().equals("ready")){
-            user.setStatus("santa");
-        }else if(user.getStatus().equals("santa")){
-            user.setStatus("unpaid");
-        }else if(user.getStatus().equals("unpaid")){
-            user.setStatus("paid");
+        if(user.getStatus().equals(Status.PAID)){
+            user.setStatus(Status.READY);
+        }else if(user.getStatus().equals(Status.READY)){
+            user.setStatus(Status.SANTA);
+        }else if(user.getStatus().equals(Status.SANTA)){
+            user.setStatus(Status.UNPAID);
+        }else if(user.getStatus().equals(Status.UNPAID)){
+            user.setStatus(Status.PAID);
         }
         userService.update(user);
         return "redirect:../usersList";
@@ -87,12 +89,17 @@ public class AdminController {
         userService.delete(id);
         return "redirect:../usersList";
     }
-
+//@TODO what should be there?
     @GetMapping("/joinInPairs")
     public String joinInPairs(){
-        santaService.joinInPairs(userService.findByStatus("paid"));
-        userService.findByStatus("paid").stream().forEach(n->userService.changeStatus("ready", n.getId()));
-        return "redirect:usersList";
+        if(santaService.findAllSantas().size()>0) {
+
+        }else {
+            santaService.joinInPairs(userService.findByStatus(Status.PAID));
+            userService.findByStatus(Status.PAID).stream().forEach(n -> userService.changeStatus(Status.READY, n.getId()));
+            return "redirect:usersList";
+        }
+        return "";
     }
 
 
@@ -101,6 +108,6 @@ public class AdminController {
         return adminService.findAllUsers();
     }
     @ModelAttribute("status")
-    public List<String>getStatus(){ return Arrays.asList("ready", "paid", "notpaid", "santa");}
+    public List<Status>getStatus(){ return Arrays.asList(Status.UNPAID,Status.PAID,Status.READY,Status.SANTA);}
 
 }
