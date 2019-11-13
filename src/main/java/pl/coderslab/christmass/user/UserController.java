@@ -12,7 +12,10 @@ import pl.coderslab.christmass.santa.SantaService;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -54,8 +57,8 @@ public class UserController {
     public String addPresentForm(@Valid @ModelAttribute Present present1,
                                  @Valid @ModelAttribute Present present2,
                                  @Valid @ModelAttribute Present present3,
-                                 @AuthenticationPrincipal CurrentUser customUser) {
-        User entityUser = customUser.getUser();
+                                 @AuthenticationPrincipal CurrentUser currentUser) {
+        User entityUser = currentUser.getUser();
         present1.setUser(entityUser);
 //        present2.setUser(entityUser);
 //        present3.setUser(entityUser);
@@ -65,35 +68,40 @@ public class UserController {
         return "redirect:/home";
     }
 
-//    @GetMapping("/santa/{userId}")
-//    public String getSanta(@PathVariable Long userId, Model model) {
-//        User user = userService.findById(userId);
-//        if (user != null) {
-//            model.addAttribute("user", user);
-//            return "santa";
-//        } else {
-//            return "home";
-////        }
-//    }
-//
-//    @GetMapping("/becomeSanta/{userId}")
-//    public String becomeSanta(@PathVariable Long userId, Model model) {
-//        User user = userService.findById(userId);
-//        user.setStatus("santa");
-//        userService.update(user);
-//        return "redirect:../santa/" + userId;
-//    }
-//TODO cannot create as long as pairs don't exist
-//    @ModelAttribute("santaPair")
-//    public Map<Long, String> santaPair() {
-//        return userService.userIdUsersSanta();
-//    }
-
-    @ModelAttribute("presents")
-    public List<Present> presents() {
-        return presentService.findAll();
+    @GetMapping("/santa")
+    public String santa(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
+        User entityUser = currentUser.getUser();
+        if (entityUser != null) {
+            model.addAttribute("user", entityUser);
+            model.addAttribute("userId", entityUser.getId());
+            return "santa";
+        } else {
+            return "home";
+        }
     }
 
+    @GetMapping("/becomeSanta")
+    public String becomeSanta(@AuthenticationPrincipal CurrentUser currentUser) {
+        User entityUser = currentUser.getUser();
+        entityUser.setStatus(Status.SANTA);
+        userService.update(entityUser);
+        return "redirect:santa";
+    }
+
+//TODO cannot create as long as pairs don't exist
+    @ModelAttribute("santaPair")
+    public Map<Long, String> santaPair() {
+        Map<Long, String> pair = userService.userIdUsersSanta();
+        return pair;
+    }
+
+    @ModelAttribute("presents")
+    public HashMap<Long, String> presents() {
+        HashMap<Long, String> presents=presentService.presentsById();
+        return presents;
+    }
+    @ModelAttribute("Status")
+    public List<Status>getStatus(){ return Arrays.asList(Status.UNPAID,Status.PAID,Status.READY,Status.SANTA);}
 
 //    @GetMapping("/hasPaid/{userId}")
 //    public String hasPaid(@PathVariable)

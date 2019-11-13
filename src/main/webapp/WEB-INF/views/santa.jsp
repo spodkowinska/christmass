@@ -1,12 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: sandracoderslab
-  Date: 07/11/2019
-  Time: 19:50
-  To change this template use File | Settings | File Templates.
---%>
+
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,36 +16,37 @@
     <div class="card">
         <div class="card-body">
             <div class="form-group col-md-12">
-                Become santa!
+
 
                 <c:choose>
-                    <c:when test="${user.status=='notpaid'}">
+                    <c:when test="${user.status == \"UNPAID\"}">
+
                         <h5><spring:message code="pl.coderslab.christmass.notpaid.1"/></h5>
                         <h5><spring:message code="pl.coderslab.christmass.notpaid.2"/></h5>
                         <h5><spring:message code="pl.coderslab.christmass.notpaid.3"/></h5>
                     </c:when>
-                    <c:when test="${user.status=='paid'}">
+                    <c:when test="${user.status == \"PAID\"}">
                         <h5><spring:message code="pl.coderslab.christmass.paid.1"/></h5>
                         <h5><spring:message code="pl.coderslab.christmass.paid.2"/></h5>
                         <h5><spring:message code="pl.coderslab.christmass.paid.3"/></h5>
                     </c:when>
-                    <c:when test="${user.status=='ready'}">
+                    <c:when test="${user.status == \"READY\"}">
                         <h5><spring:message code="pl.coderslab.christmass.ready.1"/></h5>
                         <h5><spring:message code="pl.coderslab.christmass.ready.2"/></h5>
                         <td>
                             <btn>
-                                <a class="btn btn-group-toggle" href="/user/becomeSanta/${user.id}">Become someone's
-                                    Santa</a>
+                                <a class="btn btn-group-toggle" href="/user/becomeSanta">Become someone's
+                                    Santa!</a>
                             </btn>
                         </td>
                     </c:when>
-                    <c:when test="${user.status=='santa'}">
+                    <c:when test="${user.status == \"SANTA\"}">
                         <h5><spring:message code="pl.coderslab.christmass.santa.1"/>
-                        <c:out value="${santaPair.get(user.id)}"></c:out>
-                        <spring:message code="pl.coderslab.christmass.santa.2"/></h5>
-                        <c:if test="${presents.contains(user.id)}">
+                           <c:out value="${santaPair.get(userId)}"/>
+                            <spring:message code="pl.coderslab.christmass.santa.2"/></h5>
+                        <c:if test="${presents.containsKey(userId)}">
                             <h5><spring:message code="pl.coderslab.christmass.santa.3"/></h5>
-<%--                            <c:out value="${presents.description(user.id)}"></c:out>--%>
+                            <c:out value="${presents.get(userId)}"/>
                         </c:if>
 
                     </c:when>

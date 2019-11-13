@@ -66,11 +66,10 @@ public class UserServiceImpl implements UserService {
 
     public Map<Long, String> userIdUsersSanta() {
         Map<Long, String> userSanta = new HashMap<>();
-        List<Long> ids=new ArrayList<>();
-        for (User user:userRepository.findAll()) {
-            Santa santa = santaRepository.getByGiversId(user.getId());
+        for (Santa santa:santaRepository.findAll()) {
+            Santa santaGiver = santa;
             User getter = userRepository.getOne(santa.getGettersId());
-            userSanta.put(user.getId(), getter.getFullName());
+            userSanta.put(santaGiver.getGiversId(), getter.getFullName());
         }
         return userSanta;
     }

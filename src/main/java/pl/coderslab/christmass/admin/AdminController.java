@@ -36,7 +36,7 @@ public class AdminController {
     //@TODO sending email to user that presents are not created
 
     @GetMapping("/usersList")
-    private String usersList(){
+    private String usersList() {
 
         return "admin";
     }
@@ -57,27 +57,27 @@ public class AdminController {
     }
 
     @GetMapping("/hasPaid/{userId}")
-    public String hasPaid(@PathVariable Long userId){
+    public String hasPaid(@PathVariable Long userId) {
         User user = userService.findById(userId);
-        if(user.getHasPaid()==true){
+        if (user.getHasPaid() == true) {
             user.setHasPaid(false);
-        }else
-            {user.setHasPaid(true);
+        } else {
+            user.setHasPaid(true);
         }
         userService.update(user);
         return "redirect:../usersList";
     }
 
     @GetMapping("/changeStatus/{userId}")
-    public String changeStatus(@PathVariable Long userId){
+    public String changeStatus(@PathVariable Long userId) {
         User user = userService.findById(userId);
-        if(user.getStatus().equals(Status.PAID)){
+        if (user.getStatus().equals(Status.PAID)) {
             user.setStatus(Status.READY);
-        }else if(user.getStatus().equals(Status.READY)){
+        } else if (user.getStatus().equals(Status.READY)) {
             user.setStatus(Status.SANTA);
-        }else if(user.getStatus().equals(Status.SANTA)){
+        } else if (user.getStatus().equals(Status.SANTA)) {
             user.setStatus(Status.UNPAID);
-        }else if(user.getStatus().equals(Status.UNPAID)){
+        } else if (user.getStatus().equals(Status.UNPAID)) {
             user.setStatus(Status.PAID);
         }
         userService.update(user);
@@ -89,17 +89,17 @@ public class AdminController {
         userService.delete(id);
         return "redirect:../usersList";
     }
-//@TODO what should be there?
-    @GetMapping("/joinInPairs")
-    public String joinInPairs(){
-        if(santaService.findAllSantas().size()>0) {
 
-        }else {
+    //@TODO what should be there?
+    @GetMapping("/joinInPairs")
+    public String joinInPairs() {
+        if (santaService.findAllSantas().size() > 0) {
+            return "redirect:user/home";
+        } else {
             santaService.joinInPairs(userService.findByStatus(Status.PAID));
             userService.findByStatus(Status.PAID).stream().forEach(n -> userService.changeStatus(Status.READY, n.getId()));
             return "redirect:usersList";
         }
-        return "";
     }
 
 
@@ -107,7 +107,11 @@ public class AdminController {
     public List<User> getUsers() {
         return adminService.findAllUsers();
     }
-    @ModelAttribute("status")
-    public List<Status>getStatus(){ return Arrays.asList(Status.UNPAID,Status.PAID,Status.READY,Status.SANTA);}
+
+    @ModelAttribute("Status")
+    public List<Status> getStatus() {
+        return Arrays.asList(Status.UNPAID, Status.PAID, Status.READY, Status.SANTA);
+    }
+
 
 }

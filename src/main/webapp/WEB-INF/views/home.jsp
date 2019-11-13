@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <a href="/user/santa/7"
+                                        <a href="/user/santa"
                                            class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                             Whose Santa are you?
                                         </a>
