@@ -22,11 +22,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
-                .antMatchers("/user/**").hasAnyRole("USER","ADMIN")
-                .antMatchers("/admin/**").hasRole("ADMIN").anyRequest()
+                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN", "USER").anyRequest()
                 .authenticated()
                 .and()
-//               .csrf().disable()
+                .csrf().disable()
                 .formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
 //                .defaultSuccessUrl("/admin")
@@ -56,6 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     public SpringDataUserDetailsService customUserDetailsService() {
         return new SpringDataUserDetailsService();
