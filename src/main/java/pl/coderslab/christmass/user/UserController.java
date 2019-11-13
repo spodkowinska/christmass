@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.christmass.present.Present;
 import pl.coderslab.christmass.present.PresentService;
+import pl.coderslab.christmass.santa.Santa;
 import pl.coderslab.christmass.santa.SantaService;
 
 import javax.validation.Valid;
@@ -42,29 +43,40 @@ public class UserController {
 //        return "redirect:../home";
 //    }
 
-    @GetMapping("/addPresent")
-    public String addPresent(Model model) {
-        Present present1 = new Present();
-        Present present2 = new Present();
-        Present present3 = new Present();
-        model.addAttribute("present1", present1);
-        model.addAttribute("present2", present2);
-        model.addAttribute("present3", present3);
+    @GetMapping("/add")
+    public String addPresent() {
+//        Present present1 = new Present();
+//        Present present2 = new Present();
+//        Present present3 = new Present();
+//        model.addAttribute("present1", present1);
+//        model.addAttribute("present2", present2);
+//        model.addAttribute("present3", present3);
         return "presentAdd";
     }
 
-    @PostMapping("/addPresent")
-    public String addPresentForm(@Valid @ModelAttribute Present present1,
-                                 @Valid @ModelAttribute Present present2,
-                                 @Valid @ModelAttribute Present present3,
-                                 @AuthenticationPrincipal CurrentUser currentUser) {
-        User entityUser = currentUser.getUser();
-        present1.setUser(entityUser);
-//        present2.setUser(entityUser);
-//        present3.setUser(entityUser);
-        presentService.create(present1);
-        presentService.create(present2);
-        presentService.create(present3);
+    @PostMapping("/add")
+    public String addPresentForm(
+//            @RequestParam(required = false) String present1,
+//                                 @RequestParam(required = false) String present2,
+//                                 @RequestParam(required = false) String present3,
+//                                 @AuthenticationPrincipal CurrentUser currentUser
+    ) {
+//        User entityUser = currentUser.getUser();
+//        Present pres1 = new Present();
+//        pres1.setUser(entityUser);
+//        pres1.setDescription(present1);
+//        presentService.create(pres1);
+//
+//        Present pres2 = new Present();
+//        pres2.setUser(entityUser);
+//        pres2.setDescription(present2);
+//        presentService.create(pres2);
+//
+//        Present pres3 = new Present();
+//        pres3.setUser(entityUser);
+//        pres3.setDescription(present3);
+//        presentService.create(pres3);
+
         return "redirect:/home";
     }
 
@@ -74,6 +86,7 @@ public class UserController {
         if (entityUser != null) {
             model.addAttribute("user", entityUser);
             model.addAttribute("userId", entityUser.getId());
+//            model.addAttribute("getterId", santaService.)
             return "santa";
         } else {
             return "home";
@@ -88,22 +101,31 @@ public class UserController {
         return "redirect:santa";
     }
 
-//TODO cannot create as long as pairs don't exist
+    //TODO cannot create as long as pairs don't exist
     @ModelAttribute("santaPair")
     public Map<Long, String> santaPair() {
         Map<Long, String> pair = userService.userIdUsersSanta();
         return pair;
     }
 
-    @ModelAttribute("presents")
-    public HashMap<Long, String> presents() {
-        HashMap<Long, String> presents=presentService.presentsById();
-        return presents;
-    }
+//    @ModelAttribute("presents")
+//    public HashMap<Long, String> presentsByGiversId() {
+//        HashMap<Long,List<String>> presentsByGiversId = new HashMap<>();
+//        List<Present> presents= presentService.findAll();
+//        presents.stream().forEach(p->p.getId(); );
+//        return presentsByGiversId;
+//    }
+
     @ModelAttribute("Status")
-    public List<Status>getStatus(){ return Arrays.asList(Status.UNPAID,Status.PAID,Status.READY,Status.SANTA);}
+    public List<Status> getStatus() {
+        return Arrays.asList(Status.UNPAID, Status.PAID, Status.READY, Status.SANTA);
+    }
 
-//    @GetMapping("/hasPaid/{userId}")
-//    public String hasPaid(@PathVariable)
-
+//    @ModelAttribute("santas")
+    public Map<Long,Long> giversIdGettersId() {
+        List<Santa> santas= santaService.findAllSantas();
+        Map<Long,Long> giversIdGettersId= new HashMap<>();
+        santas.stream().forEach(s-> giversIdGettersId.put(s.getGiversId(), s.getGettersId()));
+        return giversIdGettersId;
+    }
 }
