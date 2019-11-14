@@ -41,10 +41,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1 text-center">
                                             Home
                                         </p>
-                                        <div class="h5 mb-0 text-gray-800" id="total_income">
+                                        <div class="h5 mb-0 text-gray-800 text-center" id="total_income">
                                             Come back to main site
                                         </div>
                                     </div>
@@ -62,10 +62,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1 text-center">
                                             What's there for you?
                                         </p>
-                                        <div class="h5 mb-0 text-gray-800" id="total_costs">
+                                        <div class="h5 mb-0 text-gray-800 text-center" id="total_costs">
                                             Give some advice to your Santa!
                                         </div>
                                     </div>
@@ -109,10 +109,10 @@
                                         <c:when test="${user.status == \"SANTA\"}">
                                             <p><spring:message code="pl.coderslab.christmass.santa.1"/>
                                                 <b><c:out value="${santaPair.get(userId)}"/></b>
-                                                <spring:message code="pl.coderslab.christmass.santa.2"/></p>
+                                                <spring:message code="pl.coderslab.christmass.santa.2"/></p><br>
                                             <c:if test="${presents.containsKey(userId)}">
-                                                <p><spring:message code="pl.coderslab.christmass.santa.3"/></p>
-                                                <c:out value="${presents.get(userId)}"/>
+                                                <p><spring:message code="pl.coderslab.christmass.santa.3"/>
+                                                <c:out value="${presents.get(userId)}"/> </p>
                                             </c:if>
 
                                         </c:when>

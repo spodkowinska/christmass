@@ -82,6 +82,9 @@ public class homeController {
         return "forgotPassword";
     }
 
+    @GetMapping("/error")
+    public String error(){return "error";}
+
 //    @GetMapping("/whoami")
 //    @ResponseBody
 //    public String whoami(@AuthenticationPrincipal UserDetails customUser) {

@@ -52,4 +52,7 @@ public class PresentService {
     public void deleteByUserId(Long userId){
         presentRepository.deleteByUserId(userId);
     }
+    public Present findByUserId(Long userId){
+       return  presentRepository.findByUserId(userId);
+    }
 }

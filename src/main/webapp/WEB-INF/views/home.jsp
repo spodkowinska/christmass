@@ -42,11 +42,11 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-center text-success text-uppercase mb-1">
                                             Whose Santa are you?
                                         </p>
-                                        <div class="h5 mb-0 text-gray-800" id="total_income">
-                                            Check it out...
+                                        <div class="h5 mb-0 text-gray-800 text-center" id="total_income">
+                                            Check it out
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -63,10 +63,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-center text-success text-uppercase mb-1">
                                             What's there for you?
                                         </p>
-                                        <div class="h5 mb-0 text-gray-800" id="total_costs">
+                                        <div class="h5 mb-0 text-gray-800 text-center" id="total_costs">
                                             Give some advice to your Santa!
                                         </div>
                                     </div>

@@ -40,10 +40,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-center text-success text-uppercase mb-1">
                                             Home
                                         </p>
-                                        <div class="mb-0 text-gray-800">
+                                        <div class="mb-0 text-center text-gray-800">
                                             Come back to main site
                                         </div>
                                     </div>
@@ -61,10 +61,10 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-success text-center text-uppercase mb-1">
                                             Whose Santa are you?
                                         </p>
-                                        <div class="mb-0 text-gray-800">
+                                        <div class="mb-0 text-gray-800 text-center">
                                             Check it out
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@
                     <div class="p-5 col-md-12">
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 text-danger">
+                                <h6 class="m-0 text-danger text-center">
                                     Help your Santa by preparing him some hints</h6>
                             </div>
                             <div class="card-body">
@@ -90,6 +90,7 @@
                                         <form:textarea path="description" class="form-control z-depth-1"
                                                        id="exampleFormControlTextarea6" rows="3"
                                                        placeholder="What's it that you wish for?"></form:textarea>
+
                                     </div>
 
 

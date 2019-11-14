@@ -66,9 +66,12 @@ public class UserController {
                                  @Valid @ModelAttribute Present present3,
                                  @AuthenticationPrincipal CurrentUser customUser) {
         User entityUser = customUser.getUser();
+        Long userId= entityUser.getId();
+        Present previousPresent = presentService.findByUserId(userId);
+        if(previousPresent!=null){
+            presentService.deleteByUserId(userId);
+        }
         present1.setUser(entityUser);
-//        present2.setUser(entityUser);
-//        present3.setUser(entityUser);
         presentService.create(present1);
         presentService.create(present2);
         presentService.create(present3);
