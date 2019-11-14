@@ -9,6 +9,8 @@
     <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
+
+
 </head>
 <body>
 <nav class="navbar navbar-light" style="background-color: #f71317">
@@ -35,15 +37,14 @@
                 <div class="row">
 
 
-                    <div class="col-md-6 mb-4" onclick="javascript:document.location.href='/user/santa'" >
-                        <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="col-md-6 mb-4" onclick="javascript:document.location.href='/user/santa'">
+                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <a href="/user/santa"
-                                           class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Whose Santa are you?
-                                        </a>
+                                        </p>
                                         <div class="h5 mb-0 text-gray-800" id="total_income">
                                             Check it out...
                                         </div>
@@ -57,15 +58,14 @@
                     </div>
 
 
-                    <div class="col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
+                    <div class="col-md-6 mb-4" onclick="javascript:document.location.href='/user/santa'">
+                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <a href="/user/addPresent"
-                                           class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             What's there for you?
-                                        </a>
+                                        </p>
                                         <div class="h5 mb-0 text-gray-800" id="total_costs">
                                             Give some advice to your Santa!
                                         </div>

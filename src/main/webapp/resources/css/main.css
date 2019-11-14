@@ -12,3 +12,6 @@ body {
 .shadow-textarea textarea.form-control {
     padding-left: 0.8rem;
 }
+.highlightOnHover:hover {
+    outline: 2px solid darkgrey;
+}

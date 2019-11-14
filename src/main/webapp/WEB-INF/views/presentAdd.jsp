@@ -35,16 +35,15 @@
                 <div class="row">
 
 
-                    <div class="col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="col-md-6 mb-4" onclick="javascript:document.location.href='/user/home'">
+                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <a href="/user/home"
-                                           class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Home
-                                        </a>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        </p>
+                                        <div class="mb-0 text-gray-800">
                                             Come back to main site
                                         </div>
                                     </div>
@@ -57,15 +56,14 @@
                     </div>
 
 
-                    <div class="col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
+                    <div class="col-md-6 mb-4" onclick="javascript:document.location.href='/user/santa'">
+                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <a href="/user/santa"
-                                           class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Whose Santa are you?
-                                        </a>
+                                        </p>
                                         <div class="mb-0 text-gray-800">
                                             Check it out
                                         </div>

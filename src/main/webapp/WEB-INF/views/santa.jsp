@@ -36,15 +36,14 @@
                 <div class="row">
 
 
-                    <div class="col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="col-md-6 mb-4" onclick="javascript:document.location.href='/user/home'">
+                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <a href="/user/home"
-                                           class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Home
-                                        </a>
+                                        </p>
                                         <div class="h5 mb-0 text-gray-800" id="total_income">
                                             Come back to main site
                                         </div>
@@ -58,15 +57,14 @@
                     </div>
 
 
-                    <div class="col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
+                    <div class="col-md-6 mb-4" onclick="javascript:document.location.href='/user/addPresent'">
+                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <a href="/user/addPresent"
-                                           class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             What's there for you?
-                                        </a>
+                                        </p>
                                         <div class="h5 mb-0 text-gray-800" id="total_costs">
                                             Give some advice to your Santa!
                                         </div>
@@ -104,8 +102,7 @@
                                             <td>
                                                 <btn>
                                                     <a class="btn btn-group-toggle" href="/user/becomeSanta">Become
-                                                        someone's
-                                                        Santa!</a>
+                                                        someone's Santa!</a>
                                                 </btn>
                                             </td>
                                         </c:when>
