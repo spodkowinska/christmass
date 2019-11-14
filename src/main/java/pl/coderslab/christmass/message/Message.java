@@ -15,12 +15,21 @@ public class Message {
 
     private String messageBody;
 
+    private boolean isPrinted;
 
 
 
 
 
 
+
+    public boolean isPrinted() {
+        return isPrinted;
+    }
+
+    public void setPrinted(boolean printed) {
+        isPrinted = printed;
+    }
 
     public Long getId() {
         return id;

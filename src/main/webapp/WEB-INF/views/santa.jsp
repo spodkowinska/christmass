@@ -1,9 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>Become Santa!</title>
     <script src="<c:url value="/webjars/jquery/3.0.0/jquery.min.js"/>"></script>
@@ -101,7 +100,7 @@
                                             <p><spring:message code="pl.coderslab.christmass.ready.2"/></p>
                                             <td>
                                                 <btn>
-                                                    <a class="btn btn-group-toggle" href="/user/becomeSanta">Become
+                                                    <a class="btn btn-danger btn-block" href="/user/becomeSanta">Become
                                                         someone's Santa!</a>
                                                 </btn>
                                             </td>

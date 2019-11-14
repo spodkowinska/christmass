@@ -1,17 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: sandracoderslab
-  Date: 07/11/2019
-  Time: 20:16
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>admin</title>
+    <title>Admin</title>
     <script src="<c:url value="/webjars/jquery/3.0.0/jquery.min.js"/>"></script>
     <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
@@ -32,81 +26,78 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </nav>
-<%--<form action="<c:url value="/logout"/>" method="post">--%>
-<%--    <input class="fa fa-id-badge" type="submit" value="Wyloguj">--%>
-<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--</form>--%>
 <div class="container">
     <div class="container">
 
-<div class="row">
-    <div>
     <div class="card mt-4">
-        <div class="card-body col-md-3">
+        <div class="card-body col-md-3 inline">
             <a href="/admin/addUser" class="btn btn-primary">Add new user</a>
         </div>
-        <div class="card-body col-md-3">
+
+        <div class="card-body col-md-3 inline">
             <a href="/admin/addUser" class="btn btn-primary">Add new event</a>
         </div>
-        <div class="card-body col-md-3">
+
+        <div class="card-body col-md-3 inline">
             <a href="/admin/sendMessage" class="btn btn-primary">Send new message</a>
         </div>
     </div>
-    </div>
-    </div>
 
-    <div class="card mt-4">
-        <div class="card-body">
-            <table class="table table-hover">
-                <tr>
-                    <th>Person</th>
-                    <th>Change Status: </br>UNPAID/PAID/READY/SANTA</th>
-                    <th>Presents</th>
-                    <th>Delete user</th>
-                </tr>
-                <c:forEach items="${users}" var="user">
 
-                    <tr>
-                        <td>${user.fullName}</td>
-                        <td>
-                            <c:choose>
-                                <c:when test="${user.status eq \"UNPAID\"}">
-                                    <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">UNPAID</a>
-                                </c:when>
-                                <c:when test="${user.status eq \"PAID\"}">
-                                    <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">PAID</a>
-                                </c:when>
-                                <c:when test="${user.status eq \"READY\"}">
-                                    <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">READY</a>
-                                </c:when>
-                                <c:when test="${user.status eq \"SANTA\"}">
-                                    <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">SANTA</a>
-                                </c:when>
-                            </c:choose>
-                        </td>
-                        <td>
-                            <c:choose>
-                                <c:when test="${user.listOfPresents.size()>0}">
-                                    <p class="btn btn-success">CREATED</p>
-                                </c:when>
-                                <c:otherwise>
-                                    <p class="btn btn-warning">NOT YET</p>
-                                </c:otherwise>
-                            </c:choose>
-                        </td>
-                        <td>
-                            <a class="btn btn-danger" href="#" onclick="confirmDelete(${user.id}, '${user.fullName}')">
-                                DELETE</a>
-                        </td>
-                    </tr>
-                </c:forEach>
 
-            </table>
-            <a class="btn btn-danger" href="/admin/joinInPairs">Join in Pairs!</a>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Person</th>
+                            <th>Change Status: </br>UNPAID/PAID/READY/SANTA</th>
+                            <th>Presents</th>
+                            <th>Delete user</th>
+                        </tr>
+                        <c:forEach items="${users}" var="user">
+
+                            <tr>
+                                <td>${user.fullName}</td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${user.status eq \"UNPAID\"}">
+                                            <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">UNPAID</a>
+                                        </c:when>
+                                        <c:when test="${user.status eq \"PAID\"}">
+                                            <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">PAID</a>
+                                        </c:when>
+                                        <c:when test="${user.status eq \"READY\"}">
+                                            <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">READY</a>
+                                        </c:when>
+                                        <c:when test="${user.status eq \"SANTA\"}">
+                                            <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">SANTA</a>
+                                        </c:when>
+                                    </c:choose>
+                                </td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${user.listOfPresents.size()>0}">
+                                            <p class="btn btn-success">CREATED</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p class="btn btn-warning">NOT YET</p>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger" href="#"
+                                       onclick="confirmDelete(${user.id}, '${user.fullName}')">
+                                        DELETE</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+
+                    </table>
+                    <a class="btn btn-danger" href="/admin/joinInPairs">Join in Pairs!</a>
+                </div>
+            </div>
+
         </div>
     </div>
-
-</div>
-</div>
 </body>
 </html>

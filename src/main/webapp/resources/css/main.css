@@ -15,3 +15,8 @@ body {
 .highlightOnHover:hover {
     outline: 2px solid darkgrey;
 }
+
+.inline {
+    display: inline;
+    float:left;
+}
