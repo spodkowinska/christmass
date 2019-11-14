@@ -33,7 +33,10 @@ public class UserController {
     }
 
     @GetMapping("/home")
-    public String home() {
+    public String home(@AuthenticationPrincipal CurrentUser currentUser,
+                       Model model) {
+        User entityUser = currentUser.getUser();
+        model.addAttribute("user", entityUser);
         return "home";
     }
 
@@ -43,40 +46,29 @@ public class UserController {
 //        return "redirect:../home";
 //    }
 
-    @GetMapping("/add")
-    public String addPresent() {
-//        Present present1 = new Present();
-//        Present present2 = new Present();
-//        Present present3 = new Present();
-//        model.addAttribute("present1", present1);
-//        model.addAttribute("present2", present2);
-//        model.addAttribute("present3", present3);
+    @GetMapping("/addPresent")
+    public String addPresent(Model model) {
+        Present present1 = new Present();
+        Present present2 = new Present();
+        Present present3 = new Present();
+        model.addAttribute("present1", present1);
+        model.addAttribute("present2", present2);
+        model.addAttribute("present3", present3);
         return "presentAdd";
     }
 
-    @PostMapping("/add")
-    public String addPresentForm(
-//            @RequestParam(required = false) String present1,
-//                                 @RequestParam(required = false) String present2,
-//                                 @RequestParam(required = false) String present3,
-//                                 @AuthenticationPrincipal CurrentUser currentUser
-    ) {
-//        User entityUser = currentUser.getUser();
-//        Present pres1 = new Present();
-//        pres1.setUser(entityUser);
-//        pres1.setDescription(present1);
-//        presentService.create(pres1);
-//
-//        Present pres2 = new Present();
-//        pres2.setUser(entityUser);
-//        pres2.setDescription(present2);
-//        presentService.create(pres2);
-//
-//        Present pres3 = new Present();
-//        pres3.setUser(entityUser);
-//        pres3.setDescription(present3);
-//        presentService.create(pres3);
-
+    @PostMapping("/addPresent")
+    public String addPresentForm(@Valid @ModelAttribute Present present1,
+                                 @Valid @ModelAttribute Present present2,
+                                 @Valid @ModelAttribute Present present3,
+                                 @AuthenticationPrincipal CurrentUser customUser) {
+        User entityUser = customUser.getUser();
+        present1.setUser(entityUser);
+//        present2.setUser(entityUser);
+//        present3.setUser(entityUser);
+        presentService.create(present1);
+        presentService.create(present2);
+        presentService.create(present3);
         return "redirect:/home";
     }
 
@@ -121,11 +113,11 @@ public class UserController {
         return Arrays.asList(Status.UNPAID, Status.PAID, Status.READY, Status.SANTA);
     }
 
-//    @ModelAttribute("santas")
-    public Map<Long,Long> giversIdGettersId() {
-        List<Santa> santas= santaService.findAllSantas();
-        Map<Long,Long> giversIdGettersId= new HashMap<>();
-        santas.stream().forEach(s-> giversIdGettersId.put(s.getGiversId(), s.getGettersId()));
+    //    @ModelAttribute("santas")
+    public Map<Long, Long> giversIdGettersId() {
+        List<Santa> santas = santaService.findAllSantas();
+        Map<Long, Long> giversIdGettersId = new HashMap<>();
+        santas.stream().forEach(s -> giversIdGettersId.put(s.getGiversId(), s.getGettersId()));
         return giversIdGettersId;
     }
 }

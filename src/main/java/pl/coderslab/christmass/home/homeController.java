@@ -59,6 +59,11 @@ public class homeController {
         return "login";
     }
 
+    @GetMapping("/logoutSuccess")
+    public String logout() {
+        return "thankYou";
+    }
+
 //    @PostMapping("/login")
 //    public String loginForm(@Valid @ModelAttribute User user, BindingResult result) {
 //        if (result.hasErrors()) {

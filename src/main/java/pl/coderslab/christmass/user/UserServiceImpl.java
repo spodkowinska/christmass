@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
 
     public Map<Long, String> userIdUsersSanta() {
         Map<Long, String> userSanta = new HashMap<>();
-        for (Santa santa:santaRepository.findAll()) {
+        for (Santa santa : santaRepository.findAll()) {
             Santa santaGiver = santa;
             User getter = userRepository.getOne(santa.getGettersId());
             userSanta.put(santaGiver.getGiversId(), getter.getFullName());
@@ -74,13 +74,15 @@ public class UserServiceImpl implements UserService {
         return userSanta;
     }
 
-    public List <User> findByStatus(Status status){
+    public List<User> findByStatus(Status status) {
         return userRepository.findByStatus(status);
     }
 
-    public void changeStatus(Status status, Long id){
+    public void changeStatus(Status status, Long id) {
         userRepository.changeStatus(status, id);
     }
 
-
+    public void deleteRoleByUserId(Long id) {
+        userRepository.deleteRoleByUserId(id);
+    }
 }

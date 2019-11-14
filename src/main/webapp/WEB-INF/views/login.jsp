@@ -157,11 +157,12 @@
   <body>
   <div class="text-center">
     <!-- Button HTML (to Trigger Modal) -->
-    <a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Login</a>
+<%--    <a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Login</a>--%>
   </div>
 
   <!-- Modal HTML -->
-  <div id="myModal" class="modal fade">
+  <div id="myModal"
+<%--       class="modal fade">--%>
     <div class="modal-dialog modal-login">
       <div class="modal-content">
         <div class="modal-header">

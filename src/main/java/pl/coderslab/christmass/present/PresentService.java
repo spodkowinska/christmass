@@ -49,4 +49,7 @@ public class PresentService {
         presents.stream().forEach(p -> presentsById.put(p.getUser().getId(), p.getDescription()));
         return presentsById;
     }
+    public void deleteByUserId(Long userId){
+        presentRepository.deleteByUserId(userId);
+    }
 }

@@ -34,22 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/").and().exceptionHandling()
+                .logoutSuccessUrl("/logoutSuccess").and().exceptionHandling()
                 .accessDeniedPage("/access-denied");
-
-
-//                .antMatchers().permitAll()
-//                .antMatchers("/registration").permitAll()
-//                .anyRequest()
-//
-//                .authenticated().and().csrf().disable().formLogin();
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/user/**").hasAnyRole("USER","ADMIN")
-//                .authenticated()
-//                .and().formLogin()
-//                .loginPage("/login");
-//                .and().logout().logoutSuccessUrl("/thankYou")
-//                .permitAll();
     }
 
     @Bean
@@ -63,5 +49,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-//
+
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.christmass.present.PresentService;
 import pl.coderslab.christmass.santa.SantaService;
 import pl.coderslab.christmass.user.Status;
 import pl.coderslab.christmass.user.User;
@@ -22,12 +23,15 @@ public class AdminController {
     private AdminService adminService;
     private UserServiceImpl userService;
     private SantaService santaService;
+    private PresentService presentService;
 
     @Autowired
-    public AdminController(AdminService adminService, UserServiceImpl userService, SantaService santaService) {
+    public AdminController(AdminService adminService, UserServiceImpl userService,
+                           SantaService santaService, PresentService presentService) {
         this.adminService = adminService;
         this.userService = userService;
         this.santaService = santaService;
+        this.presentService = presentService;
     }
 
 //@TODO change status list
@@ -81,13 +85,23 @@ public class AdminController {
             user.setStatus(Status.PAID);
         }
         userService.update(user);
+
         return "redirect:../usersList";
     }
 
     @GetMapping("/deleteUser/{id}")
     public String delete(@PathVariable Long id) {
-        userService.delete(id);
-        return "redirect:../usersList";
+        User user = userService.findById(id);
+        if(user!=null) {
+            if (user.getRoles() != null && !user.getRoles().isEmpty()) {
+                userService.deleteRoleByUserId(id);
+            } else if (user.getListOfPresents() != null && !user.getListOfPresents().isEmpty()) {
+                presentService.deleteByUserId(id);
+            }
+            userService.delete(id);
+        }
+            return "redirect:../usersList";
+
     }
 
     //@TODO what should be there?

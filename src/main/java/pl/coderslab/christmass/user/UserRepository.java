@@ -9,20 +9,25 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    @Query("select u from User u")
+    @Query("SELECT u FROM User u")
     List<User> findAll();
 
     @Transactional
     @Modifying
-    @Query("UPDATE User u SET u.status ='SANTA' where u.id = ?1")
+    @Query("UPDATE User u SET u.status ='SANTA' WHERE u.id = ?1")
     void setSantaStatus(Long userId);
 
     @Transactional
     @Modifying
-    @Query("UPDATE User u SET u.status = :status where u.id = :userId")
+    @Query("UPDATE User u SET u.status = :status WHERE u.id = :userId")
     void changeStatus(Status status, Long userId);
 
     List<User> findByStatus(Status status);
 
     User findByUsername(String username);
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM user_role WHERE user_id = ?1", nativeQuery = true)
+    void deleteRoleByUserId(Long Id);
 }

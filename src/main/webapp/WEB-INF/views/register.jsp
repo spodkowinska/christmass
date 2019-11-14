@@ -15,28 +15,34 @@
     <style type="text/css">
         body {
             color: #999;
-            background: #f5f5f5;
+            background-image: url("/img/207.jpg");
+            /*background: #f5f5f5;*/
             font-family: 'Roboto', sans-serif;
         }
+
         .form-control, .form-control:focus, .input-group-addon {
             border-color: #e1e1e1;
             border-radius: 0;
         }
+
         .signup-form {
             width: 390px;
             margin: 0 auto;
             padding: 30px 0;
         }
+
         .signup-form h2 {
             color: #636363;
             margin: 0 0 15px;
             text-align: center;
         }
+
         .signup-form .lead {
             font-size: 14px;
             margin-bottom: 30px;
             text-align: center;
         }
+
         .signup-form form {
             border-radius: 1px;
             margin-bottom: 15px;
@@ -45,18 +51,22 @@
             box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
             padding: 30px;
         }
+
         .signup-form .form-group {
             margin-bottom: 20px;
         }
+
         .signup-form label {
             font-weight: normal;
             font-size: 13px;
         }
+
         .signup-form .form-control {
             min-height: 38px;
             box-shadow: none !important;
             border-width: 0 0 1px 0;
         }
+
         .signup-form .input-group-addon {
             max-width: 42px;
             text-align: center;
@@ -64,6 +74,7 @@
             border-width: 0 0 1px 0;
             padding-left: 5px;
         }
+
         .signup-form .btn {
             font-size: 16px;
             font-weight: bold;
@@ -73,22 +84,28 @@
             min-width: 140px;
             outline: none !important;
         }
+
         .signup-form .btn:hover, .signup-form .btn:focus {
             background: #179b81;
         }
+
         .signup-form a {
             color: #19aa8d;
             text-decoration: none;
         }
+
         .signup-form a:hover {
             text-decoration: underline;
         }
+
         .signup-form .fa {
             font-size: 21px;
         }
+
         .signup-form .fa-paper-plane {
             font-size: 17px;
         }
+
         .signup-form .fa-check {
             color: #fff;
             left: 9px;
@@ -101,145 +118,63 @@
 <body>
 <div class="signup-form">
     <form:form modelAttribute="user" method="post">
-        <h2>Create Account</h2>
-        <p class="lead">It takes about 30 secs to be able to take part in our next party.</p>
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <form:input path="firstName" type="text" id="firstName" class="form-control" placeholder="Firstname" required="required"
-                    autofocus="autofocus"/>
-        <form:errors path="firstName" css="color:red"/>
-            </div>
-        </div>
-        <div class="form-group">
+    <h2>Create Account</h2>
+    <p class="lead">It takes about 30 secs to be able to take part in our next party.</p>
+    <div class="form-group">
         <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-        <form:input path="lastName" type="text" id="lastName" class="form-control" placeholder="Last name"
-                    required="required"/>
-        <form:errors path="lastName" css="color:red"/>
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <form:input path="firstName" type="text" id="firstName" class="form-control" placeholder="Firstname"
+                        required="required"
+                        autofocus="autofocus"/>
+            <form:errors path="firstName" css="color:red"/>
         </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <form:input path="lastName" type="text" id="lastName" class="form-control" placeholder="Last name"
+                        required="required"/>
+            <form:errors path="lastName" css="color:red"/>
         </div>
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
-        <form:input path="username" type="email" id="inputEmail" class="form-control" placeholder="Email Address"
-                    required="required"/>
-        <form:errors path="username" css="color:red"/>
-            </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
+            <form:input path="username" type="email" id="inputEmail" class="form-control" placeholder="Email Address"
+                        required="required"/>
+            <form:errors path="username" css="color:red"/>
         </div>
-        <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-        <form:input path="password" type="password" id="inputPassword" class="form-control" placeholder="Password"
-                    required="required"/>
-        <form:errors path="password" css="color:red"/>
-            </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <form:input path="password" type="password" id="inputPassword" class="form-control" placeholder="Password"
+                        required="required"/>
+            <form:errors path="password" css="color:red"/>
         </div>
-        <div class="form-group">
-            <div class="input-group">
+    </div>
+    <div class="form-group">
+        <div class="input-group">
 				<span class="input-group-addon">
 					<i class="fa fa-lock"></i>
 					<i class="fa fa-check"></i>
 				</span>
 
-                <input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
-            </div>
+            <input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password"
+                   required="required">
         </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
-        </div>
-        <p class="small text-center">By clicking the Sign Up button, you agree to our <br><a href="#">Terms &amp; Conditions</a>, and <a href="#">Privacy Policy</a>.</p>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+    </div>
 
-    <div class="text-center">Already have an account? <a href="#">Login here</a>.</div>
+    <div class="text-center">Already have an account? <a href="/login">Login here</a>.</div>
 </div>
-<%--</body>--%>
-<%--</html>--%>
 
-
-<%--<!DOCTYPE html>--%>
-<%--<html lang="en" xmlns:form="http://www.w3.org/1999/xhtml">--%>
-
-<%--<head>--%>
-
-
-
-<%--</head>--%>
-
-<%--<body class="bg-dark">--%>
-<%--<form:form modelAttribute="user" method="post">--%>
-<%--    <div class="container">--%>
-<%--        <div class="card card-register mx-auto mt-5">--%>
-<%--            <div class="card-header">Register an Account ${pageContext.request.contextPath} </div>--%>
-<%--            <div class="card-body">--%>
-<%--                <form>--%>
-<%--                    <div class="form-group">--%>
-<%--                        <div class="form-row">--%>
-<%--                            <div class="col-md-6">--%>
-<%--                                <div class="form-label-group">--%>
-<%--                                    <form:input path="firstName" type="text" id="firstName" class="form-control" placeholder="First name"--%>
-<%--                                                required="required" autofocus="autofocus"/>--%>
-<%--                                    <form:errors path="firstName" css="color:red"/>--%>
-<%--                                    <label for="firstName">First name</label>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="col-md-6">--%>
-<%--                                <div class="form-label-group">--%>
-<%--                                    <form:input path="lastName" type="text" id="lastName" class="form-control" placeholder="Last name"--%>
-<%--                                                required="required"/>--%>
-<%--                                    <form:errors path="lastName" css="color:red"/>--%>
-<%--                                    <label for="lastName">Last name</label>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="form-group">--%>
-<%--                        <div class="form-label-group">--%>
-<%--                            <form:input path="username" type="email" id="inputEmail" class="form-control" placeholder="Email address"--%>
-<%--                                        required="required"/>--%>
-<%--                            <form:errors path="username" css="color:red"/>--%>
-<%--                            <label for="inputEmail">Email address</label>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <div class="form-group">--%>
-<%--                        <div class="form-row">--%>
-<%--                            <div class="col-md-6">--%>
-<%--                                <div class="form-label-group">--%>
-<%--                                    <form:input path="password" type="password" id="inputPassword" class="form-control" placeholder="Password"--%>
-<%--                                                required="required"/>--%>
-<%--                                    <form:errors path="password" css="color:red"/>--%>
-<%--                                    <label for="inputPassword">Password</label>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="col-md-6">--%>
-<%--                                <div class="form-label-group">--%>
-<%--                                    <input type="password" id="confirmPassword" class="form-control"--%>
-<%--                                           placeholder="Confirm password" required="required">--%>
-
-<%--                                    <label for="confirmPassword">Confirm password</label>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <input type="submit" class="btn btn-primary btn-block">Register</input>--%>
-<%--                    &lt;%&ndash;                <a class="btn btn-primary btn-block" href="/login">Register</a>&ndash;%&gt;--%>
-<%--                </form>--%>
-<%--                <div class="text-center">--%>
-<%--                    <a class="d-block small mt-3" href="/login">Login Page</a>--%>
-<%--                    <a class="d-block small" href="/forgotPassword">Forgot Password?</a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 </form:form>
 
-<%--<!-- Bootstrap core JavaScript-->--%>
-<%--<script src="vendor/jquery/jquery.min.js"></script>--%>
-<%--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
-
-<%--<!-- Core plugin JavaScript-->--%>
-<%--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>--%>
 
 </body>
 

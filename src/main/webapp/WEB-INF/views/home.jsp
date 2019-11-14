@@ -4,14 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>ChristmassPlanner</title>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="<c:url value="/webjars/jquery/3.0.0/jquery.min.js"/>"></script>
     <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
 </head>
 <body>
-
+<nav class="navbar navbar-light" style="background-color: #f71317">
+    <a class="text-xs font-weight-bold mb-1" style="color: white">Very Merry Christmass ${user.fullName}!</a>
+    <form action="<c:url value="/logout"/>" method="post" class="form-inline">
+        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout">Logout</button>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
+</nav>
+<%--<form action="<c:url value="/logout"/>" method="post">--%>
+<%--    <input class="fa fa-id-badge" type="submit" value="Logout">--%>
+<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+<%--</form>--%>
 <!-- Page Wrapper -->
 <div class="container">
 
@@ -19,10 +29,7 @@
 
         <!-- Main Content -->
         <div id="content">
-            <form action="<c:url value="/logout"/>" method="post">
-                <input class="fa fa-id-badge" type="submit" value="Wyloguj">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            </form>
+
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
@@ -38,7 +45,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <a href="/user/santa"
-                                           class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                           class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Whose Santa are you?
                                         </a>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800" id="total_income">
@@ -81,7 +88,7 @@
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Welcome!</h6>
+                                <h6 class="m-0 font-weight-bold text-danger">Welcome!</h6>
                             </div>
                             <div class="card-body">
                                 <div class="text-center">
