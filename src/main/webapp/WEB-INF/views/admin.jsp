@@ -25,17 +25,30 @@
     </script>
 </head>
 <body>
-<form action="<c:url value="/logout"/>" method="post">
-    <input class="fa fa-id-badge" type="submit" value="Wyloguj">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-</form>
+<nav class="navbar navbar-light" style="background-color: #f71317">
+    <a class="text-xs font-weight-bold mb-1" style="color: white">Very Merry Christmass ${user.fullName}!</a>
+    <form action="<c:url value="/logout"/>" method="post" class="form-inline">
+        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout">Logout</button>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
+</nav>
+<%--<form action="<c:url value="/logout"/>" method="post">--%>
+<%--    <input class="fa fa-id-badge" type="submit" value="Wyloguj">--%>
+<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+<%--</form>--%>
 <div class="container">
+    <div class="container">
 
-    <header>Users</header>
 
-    <div class="card">
-        <div class="card-body">
+    <div class="card mt-4">
+        <div class="card-body col-md-3">
             <a href="/admin/addUser" class="btn btn-primary">Add new user</a>
+        </div>
+        <div class="card-body col-md-3">
+            <a href="/admin/addUser" class="btn btn-primary">Add new event</a>
+        </div>
+        <div class="card-body col-md-3">
+            <a href="/admin/sendMessage" class="btn btn-primary">Send new message</a>
         </div>
     </div>
 
@@ -44,7 +57,6 @@
             <table class="table table-hover">
                 <tr>
                     <th>Person</th>
-<%--                    <th>Change paid status</th>--%>
                     <th>Change Status: </br>UNPAID/PAID/READY/SANTA</th>
                     <th>Presents</th>
                     <th>Delete user</th>
@@ -53,17 +65,6 @@
 
                     <tr>
                         <td>${user.fullName}</td>
-
-<%--                        <td>--%>
-<%--                            <c:choose>--%>
-<%--                                <c:when test="${user.hasPaid=='true'}">--%>
-<%--                                    <a class="btn btn-success" href="/admin/hasPaid/${user.id}">Paid</a>--%>
-<%--                                </c:when>--%>
-<%--                                <c:otherwise>--%>
-<%--                                    <a class="btn btn-warning" href="/admin/hasPaid/${user.id}">Unpaid</a>--%>
-<%--                                </c:otherwise>--%>
-<%--                            </c:choose>--%>
-<%--                        </td>--%>
                         <td>
                             <c:choose>
                                 <c:when test="${user.status eq \"UNPAID\"}">
@@ -83,10 +84,10 @@
                         <td>
                             <c:choose>
                                 <c:when test="${user.listOfPresents.size()>0}">
-                                    <p class="btn btn-success" >CREATED</p>
+                                    <p class="btn btn-success">CREATED</p>
                                 </c:when>
                                 <c:otherwise>
-                                    <p class="btn btn-warning" >NOT YET</p>
+                                    <p class="btn btn-warning">NOT YET</p>
                                 </c:otherwise>
                             </c:choose>
                         </td>

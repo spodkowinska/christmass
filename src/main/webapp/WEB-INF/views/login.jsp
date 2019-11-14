@@ -80,6 +80,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style type="text/css">
       body {
+        background-image: url("/img/207.jpg");
         font-family: 'Varela Round', sans-serif;
       }
       .modal-login {

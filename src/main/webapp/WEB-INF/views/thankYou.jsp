@@ -12,5 +12,10 @@
 </head>
 <body>
 Thank you for using Christmass Planner
+<div class="card">
+    <div class="card-body">
+        <a href="/admin/addUser" class="btn btn-primary">Add new user</a>
+    </div>
+</div>
 </body>
 </html>

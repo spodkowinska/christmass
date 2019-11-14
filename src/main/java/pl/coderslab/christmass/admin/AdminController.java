@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.christmass.message.Message;
+import pl.coderslab.christmass.message.MessageService;
 import pl.coderslab.christmass.present.PresentService;
 import pl.coderslab.christmass.santa.SantaService;
 import pl.coderslab.christmass.user.Status;
@@ -24,14 +26,17 @@ public class AdminController {
     private UserServiceImpl userService;
     private SantaService santaService;
     private PresentService presentService;
+    private MessageService messageService;
 
     @Autowired
     public AdminController(AdminService adminService, UserServiceImpl userService,
-                           SantaService santaService, PresentService presentService) {
+                           SantaService santaService, PresentService presentService,
+                           MessageService messageService) {
         this.adminService = adminService;
         this.userService = userService;
         this.santaService = santaService;
         this.presentService = presentService;
+        this.messageService = messageService;
     }
 
 //@TODO change status list
@@ -92,7 +97,7 @@ public class AdminController {
     @GetMapping("/deleteUser/{id}")
     public String delete(@PathVariable Long id) {
         User user = userService.findById(id);
-        if(user!=null) {
+        if (user != null) {
             if (user.getRoles() != null && !user.getRoles().isEmpty()) {
                 userService.deleteRoleByUserId(id);
             } else if (user.getListOfPresents() != null && !user.getListOfPresents().isEmpty()) {
@@ -100,7 +105,7 @@ public class AdminController {
             }
             userService.delete(id);
         }
-            return "redirect:../usersList";
+        return "redirect:../usersList";
 
     }
 
@@ -114,6 +119,19 @@ public class AdminController {
             userService.findByStatus(Status.PAID).stream().forEach(n -> userService.changeStatus(Status.READY, n.getId()));
             return "redirect:usersList";
         }
+    }
+
+    @GetMapping("/sendMessage")
+    public String sendMessage(Model model) {
+        Message message = new Message();
+        model.addAttribute("message", message);
+        return "sendMessage";
+    }
+
+    @PostMapping("/sendMessage")
+    public String sendMessageForm(@Valid @ModelAttribute Message message) {
+        messageService.create(message);
+        return "redirect:usersList";
     }
 
 

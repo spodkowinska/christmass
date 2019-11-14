@@ -76,6 +76,6 @@
 
     </div>
 </div>
-    <a href="/admin">Admin main site</a>
+    <a href="/admin/usersList">Admin main site</a>
 </body>
 </html>

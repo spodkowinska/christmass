@@ -119,7 +119,7 @@
 <div class="signup-form">
     <form:form modelAttribute="user" method="post">
     <h2>Create Account</h2>
-    <p class="lead">It takes about 30 secs to be able to take part in our next party.</p>
+    <p class="lead">It takes about 30 secs to be able to take part </br>in our next party.</p>
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -160,7 +160,7 @@
 					<i class="fa fa-check"></i>
 				</span>
 
-            <input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password"
+            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password"
                    required="required">
         </div>
     </div>
