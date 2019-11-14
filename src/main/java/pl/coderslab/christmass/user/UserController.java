@@ -78,6 +78,8 @@ public class UserController {
     @GetMapping("/santa")
     public String santa(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
         User entityUser = currentUser.getUser();
+        Long id=entityUser.getId();
+        entityUser=userService.findById(id);
         if (entityUser != null) {
             model.addAttribute("user", entityUser);
             model.addAttribute("userId", entityUser.getId());
@@ -103,24 +105,29 @@ public class UserController {
         return pair;
     }
 
-//    @ModelAttribute("presents")
-//    public HashMap<Long, String> presentsByGiversId() {
-//        HashMap<Long,List<String>> presentsByGiversId = new HashMap<>();
-//        List<Present> presents= presentService.findAll();
-//        presents.stream().forEach(p->p.getId(); );
-//        return presentsByGiversId;
-//    }
+    @ModelAttribute("presents")
+    public HashMap<Long, String> presentsByGiversId() {
+        HashMap<Long,String> presentsByGiversId = new HashMap<>();
+        List<Present> presents= presentService.findAll();
+
+        presents.stream().forEach(p->presentsByGiversId.put(gettersId(p.getId()), p.getDescription()));
+        return presentsByGiversId;
+    }
 
     @ModelAttribute("Status")
     public List<Status> getStatus() {
         return Arrays.asList(Status.UNPAID, Status.PAID, Status.READY, Status.SANTA);
     }
 
-    //    @ModelAttribute("santas")
-    public Map<Long, Long> giversIdGettersId() {
+
+
+    public Long gettersId(Long giversId) {
         List<Santa> santas = santaService.findAllSantas();
-        Map<Long, Long> giversIdGettersId = new HashMap<>();
-        santas.stream().forEach(s -> giversIdGettersId.put(s.getGiversId(), s.getGettersId()));
-        return giversIdGettersId;
+        Santa santa = santaService.findByGiversId(giversId);
+        if(santa!=null) {
+            Long gettersId = santa.getGettersId();
+            return gettersId;
+        }
+        return 0l;
     }
 }

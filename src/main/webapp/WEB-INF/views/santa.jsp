@@ -111,7 +111,7 @@
                                         </c:when>
                                         <c:when test="${user.status == \"SANTA\"}">
                                             <p><spring:message code="pl.coderslab.christmass.santa.1"/>
-                                                <c:out value="${santaPair.get(userId)}"/>
+                                                <b><c:out value="${santaPair.get(userId)}"/></b>
                                                 <spring:message code="pl.coderslab.christmass.santa.2"/></p>
                                             <c:if test="${presents.containsKey(userId)}">
                                                 <p><spring:message code="pl.coderslab.christmass.santa.3"/></p>

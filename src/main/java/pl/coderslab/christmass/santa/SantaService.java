@@ -62,6 +62,9 @@ public class SantaService {
         }
 
     }
+    public Santa findByGiversId(Long giversId){
+       return santaRepository.findByGiversId(giversId);
+    }
 }
 
 

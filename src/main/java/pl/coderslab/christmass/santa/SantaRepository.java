@@ -8,5 +8,5 @@ public interface SantaRepository extends JpaRepository<Santa, Long> {
 
     List<Santa> findAll();
 
-    Santa getByGiversId(Long id);
+    Santa findByGiversId(Long id);
 }
