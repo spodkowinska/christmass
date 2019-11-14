@@ -12,17 +12,13 @@
 </head>
 <body>
 <nav class="navbar navbar-light" style="background-color: #f71317">
-    <a class="text-xs font-weight-bold mb-1" style="color: white">Very Merry Christmass ${user.fullName}!</a>
+    <a class="text-xs font-weight-bold mb-1" style="color: white">Very Merry Christmas ${user.fullName}!</a>
     <form action="<c:url value="/logout"/>" method="post" class="form-inline">
         <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout">Logout</button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </nav>
-<%--<form action="<c:url value="/logout"/>" method="post">--%>
-<%--    <input class="fa fa-id-badge" type="submit" value="Logout">--%>
-<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--</form>--%>
-<!-- Page Wrapper -->
+
 <div class="container">
 
     <div id="content-wrapper" class="d-flex flex-column">
@@ -48,7 +44,7 @@
                                            class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Whose Santa are you?
                                         </a>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="total_income">
+                                        <div class="h5 mb-0 text-gray-800" id="total_income">
                                             Check it out...
                                         </div>
                                     </div>
@@ -70,7 +66,7 @@
                                            class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             What's there for you?
                                         </a>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="total_costs">
+                                        <div class="h5 mb-0 text-gray-800" id="total_costs">
                                             Give some advice to your Santa!
                                         </div>
                                     </div>
@@ -88,7 +84,7 @@
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-danger">Welcome!</h6>
+                                <h6 class="m-0 font-weight-bold text-danger">Ho ho ho ho!</h6>
                             </div>
                             <div class="card-body">
                                 <div class="text-center">

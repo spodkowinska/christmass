@@ -47,13 +47,16 @@ public class UserController {
 //    }
 
     @GetMapping("/addPresent")
-    public String addPresent(Model model) {
+    public String addPresent(@AuthenticationPrincipal CurrentUser currentUser,
+                             Model model) {
         Present present1 = new Present();
         Present present2 = new Present();
         Present present3 = new Present();
         model.addAttribute("present1", present1);
         model.addAttribute("present2", present2);
         model.addAttribute("present3", present3);
+        User entityUser = currentUser.getUser();
+        model.addAttribute("user", entityUser);
         return "presentAdd";
     }
 
@@ -69,7 +72,7 @@ public class UserController {
         presentService.create(present1);
         presentService.create(present2);
         presentService.create(present3);
-        return "redirect:/home";
+        return "redirect:home";
     }
 
     @GetMapping("/santa")

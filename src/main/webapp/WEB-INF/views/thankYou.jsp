@@ -11,10 +11,16 @@
     <title>Thank You</title>
 </head>
 <body>
-Thank you for using Christmass Planner
 <div class="card">
     <div class="card-body">
-        <a href="/admin/addUser" class="btn btn-primary">Add new user</a>
+    Thank you for using Christmass Planner
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-body">
+        <a href="/login">Login again</a>
     </div>
 </div>
 </body>

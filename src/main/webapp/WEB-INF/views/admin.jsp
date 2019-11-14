@@ -26,7 +26,7 @@
 </head>
 <body>
 <nav class="navbar navbar-light" style="background-color: #f71317">
-    <a class="text-xs font-weight-bold mb-1" style="color: white">Very Merry Christmass ${user.fullName}!</a>
+    <a class="text-xs font-weight-bold mb-1" style="color: white">Very Merry Christmas ${user.fullName}!</a>
     <form action="<c:url value="/logout"/>" method="post" class="form-inline">
         <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout">Logout</button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -39,7 +39,8 @@
 <div class="container">
     <div class="container">
 
-
+<div class="row">
+    <div>
     <div class="card mt-4">
         <div class="card-body col-md-3">
             <a href="/admin/addUser" class="btn btn-primary">Add new user</a>
@@ -50,6 +51,8 @@
         <div class="card-body col-md-3">
             <a href="/admin/sendMessage" class="btn btn-primary">Send new message</a>
         </div>
+    </div>
+    </div>
     </div>
 
     <div class="card mt-4">
@@ -104,6 +107,6 @@
     </div>
 
 </div>
-
+</div>
 </body>
 </html>
