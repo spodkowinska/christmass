@@ -1,6 +1,7 @@
 package pl.coderslab.christmass.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,7 @@ import pl.coderslab.christmass.message.Message;
 import pl.coderslab.christmass.message.MessageService;
 import pl.coderslab.christmass.present.PresentService;
 import pl.coderslab.christmass.santa.SantaService;
+import pl.coderslab.christmass.user.CurrentUser;
 import pl.coderslab.christmass.user.Status;
 import pl.coderslab.christmass.user.User;
 import pl.coderslab.christmass.user.UserServiceImpl;
@@ -45,8 +47,8 @@ public class AdminController {
     //@TODO sending email to user that presents are not created
 
     @GetMapping("/usersList")
-    private String usersList() {
-
+    private String usersList( @AuthenticationPrincipal CurrentUser customUser) {
+        User entityUser = customUser.getUser();
         return "admin";
     }
 
@@ -61,21 +63,11 @@ public class AdminController {
         if (result.hasErrors()) {
             return "addUser";
         }
+
         userService.saveUser(user);
         return "redirect:usersList";
     }
 
-    @GetMapping("/hasPaid/{userId}")
-    public String hasPaid(@PathVariable Long userId) {
-        User user = userService.findById(userId);
-        if (user.getHasPaid() == true) {
-            user.setHasPaid(false);
-        } else {
-            user.setHasPaid(true);
-        }
-        userService.update(user);
-        return "redirect:../usersList";
-    }
 
     @GetMapping("/changeStatus/{userId}")
     public String changeStatus(@PathVariable Long userId) {

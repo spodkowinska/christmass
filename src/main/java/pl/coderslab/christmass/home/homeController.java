@@ -64,13 +64,6 @@ public class homeController {
         return "thankYou";
     }
 
-//    @PostMapping("/login")
-//    public String loginForm(@Valid @ModelAttribute User user, BindingResult result) {
-//        if (result.hasErrors()) {
-//            return "login";
-//        }
-//        return "redirect:home";
-//    }
 
     @GetMapping("/thankYou")
     public String thankYou() {
@@ -84,13 +77,6 @@ public class homeController {
 
     @GetMapping("/error")
     public String error(){return "error";}
-
-//    @GetMapping("/whoami")
-//    @ResponseBody
-//    public String whoami(@AuthenticationPrincipal UserDetails customUser) {
-//        log.info("customUser class {} " , customUser.getClass());
-//        return "You are logged as " + customUser;
-//    }
 
 
 }

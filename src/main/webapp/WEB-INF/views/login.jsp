@@ -174,7 +174,7 @@
           <form action="/examples/actions/confirmation.php" method="post">
             <div class="form-group">
               <i class="fa fa-user"></i>
-              <form:input path="username" type="text" name="username" class="form-control" placeholder="Username" required="required"/>
+              <form:input path="username" type="text" name="username" class="form-control" placeholder="Email" required="required"/>
             </div>
             <div class="form-group">
               <i class="fa fa-lock"></i>
@@ -186,9 +186,7 @@
 <%--          </form>--%>
 
         </div>
-        <div class="modal-footer">
-          <a href="#">Forgot Password?</a>
-        </div>
+
       </div>
     </div>
   </div>

@@ -27,20 +27,24 @@
     </form>
 </nav>
 <div class="container">
-    <div class="container">
+    <div class="container justify-content-center">
 
     <div class="card mt-4">
-        <div class="card-body col-md-3 inline">
-            <a href="/admin/addUser" class="btn btn-primary">Add new user</a>
+        <div class="card-body">
+        <div class="row">
+        <div class=" col-md-5">
+            <a href="/admin/addUser" class="btn btn-success">Add new user</a>
         </div>
 
-        <div class="card-body col-md-3 inline">
-            <a href="/admin/addUser" class="btn btn-primary">Add new event</a>
+        <div class=" col-md-3">
+            <a href="/user/home" class="btn btn-success text-center">User Home Panel</a>
         </div>
 
-        <div class="card-body col-md-3 inline">
-            <a href="/admin/sendMessage" class="btn btn-primary">Send new message</a>
+        <div class=" col-md-4 ">
+            <a href="/admin/sendMessage" class="btn btn-success float-right">Send new message</a>
         </div>
+    </div>
+    </div>
     </div>
 
 

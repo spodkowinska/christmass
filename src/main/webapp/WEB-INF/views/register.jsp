@@ -123,7 +123,7 @@
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <form:input path="firstName" type="text" id="firstName" class="form-control" placeholder="Firstname"
+            <form:input path="firstName" type="text" id="firstName" class="form-control" placeholder="First name"
                         required="required"
                         autofocus="autofocus"/>
             <form:errors path="firstName" css="color:red"/>

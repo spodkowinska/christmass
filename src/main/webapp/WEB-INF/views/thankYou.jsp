@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: sandracoderslab
@@ -9,11 +10,12 @@
 <html>
 <head>
     <title>Thank You</title>
+    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
 </head>
-<body>
+<body style="background-image: url('/img/207.jpg')">
 <div class="card">
     <div class="card-body">
-    Thank you for using Christmass Planner
+        <h4>Thank you for using Christmas Planner</h4>
     </div>
 </div>
 

@@ -62,7 +62,7 @@
 
                 <div class="form-group col-md-6">
                     <label for="password">Password</label>
-                    <form:input path="password" class="form-control" id="password"/>
+                    <form:input path="password" type="password" class="form-control" id="password"/>
                     <form:errors path="password" element="div" cssClass="error"/>
                 </div>
 

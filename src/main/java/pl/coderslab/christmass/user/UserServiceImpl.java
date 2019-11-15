@@ -40,7 +40,9 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-        user.setStatus(Status.UNPAID);
+        if(user.getStatus()==null) {
+            user.setStatus(Status.UNPAID);
+        }
         userRepository.save(user);
     }
 
