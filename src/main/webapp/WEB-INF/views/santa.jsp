@@ -33,9 +33,7 @@
                 <br/>
 
                 <div class="row">
-
-
-                    <div class="col-md-6 mb-4" onclick="javascript:document.location.href='/user/home'">
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/home'">
                         <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -56,7 +54,28 @@
                     </div>
 
 
-                    <div class="col-md-6 mb-4" onclick="javascript:document.location.href='/user/addPresent'">
+
+
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/santa'">
+                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <p class="text-xs font-weight-bold text-success text-center text-uppercase mb-1">
+                                            Whose Santa are you?
+                                        </p>
+                                        <div class="mb-0 text-gray-800 text-center">
+                                            Check it out
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/addPresent'">
                         <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -75,7 +94,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="container mt-4">
                         <div class="card">
@@ -109,9 +127,9 @@
                                             <p><spring:message code="pl.coderslab.christmass.santa.1"/>
                                                 <b><c:out value="${santaPair.get(userId)}"/></b>
                                                 <spring:message code="pl.coderslab.christmass.santa.2"/></p><br>
-                                            <c:if test="${presents.containsKey(userId)}">
+                                            <c:if test="${presentsByGiver.containsKey(userId)}">
                                                 <p><spring:message code="pl.coderslab.christmass.santa.3"/>
-                                                <c:out value="${presents.get(userId)}"/> </p>
+                                                <c:out value="${presentsByGiver.get(userId)}"/> </p>
                                             </c:if>
 
                                         </c:when>

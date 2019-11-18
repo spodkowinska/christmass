@@ -12,4 +12,5 @@ public interface PresentRepository extends JpaRepository<Present, Long> {
     void deleteByUserId(Long id);
 
     Present findByUserId(Long userId);
+
 }

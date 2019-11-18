@@ -47,8 +47,9 @@ public class AdminController {
     //@TODO sending email to user that presents are not created
 
     @GetMapping("/usersList")
-    private String usersList( @AuthenticationPrincipal CurrentUser customUser) {
+    private String usersList( @AuthenticationPrincipal CurrentUser customUser, Model model) {
         User entityUser = customUser.getUser();
+        model.addAttribute("user", entityUser);
         return "admin";
     }
 

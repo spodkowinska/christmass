@@ -62,8 +62,8 @@ public class SantaService {
         }
 
     }
-    public Santa findByGiversId(Long giversId){
-       return santaRepository.findByGiversId(giversId);
+    public Santa findByGettersId(Long gettersId){
+       return santaRepository.findByGettersId(gettersId);
     }
 }
 

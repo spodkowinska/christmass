@@ -34,9 +34,27 @@
                 <br/>
 
                 <div class="row">
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/home'">
+                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <p class="text-xs font-weight-bold text-center text-success text-uppercase mb-1">
+                                            Home
+                                        </p>
+                                        <div class="mb-0 text-center text-gray-800">
+                                            Come back to main site
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-
-                    <div class="col-md-6 mb-4" onclick="javascript:document.location.href='/user/santa'">
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/santa'">
                         <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -57,7 +75,7 @@
                     </div>
 
 
-                    <div class="col-md-6 mb-4" onclick="javascript:document.location.href='/user/addPresent'">
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/addPresent'">
                         <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">

@@ -108,12 +108,12 @@ public class UserController {
         return pair;
     }
 
-    @ModelAttribute("presents")
+    @ModelAttribute("presentsByGiver")
     public HashMap<Long, String> presentsByGiversId() {
         HashMap<Long,String> presentsByGiversId = new HashMap<>();
         List<Present> presents= presentService.findAll();
 
-        presents.stream().forEach(p->presentsByGiversId.put(gettersId(p.getId()), p.getDescription()));
+        presents.stream().forEach(p->presentsByGiversId.put(giversId(p.getUser().getId()), p.getDescription()));
         return presentsByGiversId;
     }
 
@@ -124,12 +124,12 @@ public class UserController {
 
 
 
-    public Long gettersId(Long giversId) {
+    public Long giversId(Long gettersId) {
         List<Santa> santas = santaService.findAllSantas();
-        Santa santa = santaService.findByGiversId(giversId);
+        Santa santa = santaService.findByGettersId(gettersId);
         if(santa!=null) {
-            Long gettersId = santa.getGettersId();
-            return gettersId;
+            Long giversId = santa.getGiversId();
+            return giversId;
         }
         return 0l;
     }
