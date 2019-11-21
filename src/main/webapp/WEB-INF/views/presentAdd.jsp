@@ -116,10 +116,9 @@
                                         <label for="present1">
                                             <spring:message code="pl.coderslab.christmass.present.1"/>
                                         </label>
-<%--                                        <form:textarea path="description" class="form-control z-depth-1"--%>
-<%--                                                       id="present1" rows="3"--%>
-<%--                                                       placeholder="${placeholder}">--%>
-<%--                                        </form:textarea>--%>
+                                        <form:textarea path="description" class="form-control z-depth-1"
+                                                       id="present1" rows="3"
+                                                       placeholder="${placeholder}"></form:textarea>
 
                                     </div>
 
@@ -127,22 +126,27 @@
                                     <div class="text-left">
                                         <form:form modelAttribute="present2" method="post">
                                         <div class="form-group shadow-textarea">
-                                            <label for="exampleFormControlTextarea6">Present 2</label>
+                                            <label for="exampleFormControlTextarea6">
+                                                <spring:message code="pl.coderslab.christmass.present.3"/>
+                                            </label>
                                             <form:textarea path="description2" class="form-control z-depth-1"
                                                            id="exampleFormControlTextarea6" rows="3"
-                                                           placeholder="What's your biggest desire?"></form:textarea>
+                                                           placeholder="${placeholder}"></form:textarea>
                                         </div>
 
 
                                         <div class="text-left">
                                             <form:form modelAttribute="present3" method="post">
                                                 <div class="form-group shadow-textarea">
-                                                    <label for="exampleFormControlTextarea6">Present 3</label>
+                                                    <label for="exampleFormControlTextarea6">
+                                                        <spring:message code="pl.coderslab.christmass.present.4"/>
+                                                    </label>
                                                     <form:textarea path="description3" class="form-control z-depth-1"
                                                                    id="exampleFormControlTextarea6" rows="3"
-                                                                   placeholder="What sparks joy in ya?"></form:textarea>
+                                                                   placeholder="${placeholder}"></form:textarea>
                                                 </div>
-                                                <input type="submit" value="I want that!"
+                                                <spring:message code="pl.coderslab.christmass.presentBtn" var="presentSubmitBtn" />
+                                                <input type="submit" value= "${presentSubmitBtn}"
                                                        class="btn btn-danger btn-block">
                                             </form:form>
                                             </form:form>
