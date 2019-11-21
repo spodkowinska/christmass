@@ -1,4 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -6,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login to Christmass</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,7 +19,8 @@
     <style type="text/css">
       body {
         color: #999;
-        background: #f5f5f5;
+        background-image: url("/img/207.jpg");
+        /*background: #f5f5f5;*/
         font-family: 'Varela Round', sans-serif;
       }
       .form-control {
@@ -53,9 +57,10 @@
         height: 100px;
         border-radius: 50%;
         z-index: 9;
-        background: #4aba70;
+        background: #19aa8d;
         padding: 15px;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+
       }
       .login-form .avatar i {
         font-size: 62px;
@@ -74,12 +79,19 @@
         right: 15px;
       }
       .login-form .btn {
-        background: #4aba70;
+        font-size: 16px;
+        font-weight: bold;
+        background: #19aa8d;
+        border-radius: 3px;
         border: none;
-        line-height: normal;
+        min-width: 140px;
+        outline: none !important;
+        /*background: #4aba70;*/
+        /*border: none;*/
+        /*line-height: normal;*/
       }
       .login-form .btn:hover, .login-form .btn:focus {
-        background: #42ae68;
+        background: #056861;
       }
       .login-form .checkbox-inline {
         float: left;
@@ -113,12 +125,12 @@
 
           messages :{
             username : {
-              required : 'Enter username',
-              email: 'Email needs to include an \"@\"'
+              required : <spring:message code="pl.coderslab.christmass.enterLogin"/>,
+              email: <spring:message code="pl.coderslab.christmass.enterLogin@"/>
             },
             password : {
-              required : 'Enter password',
-              minlength: 'Password needs to have at least three characters'
+              required : <spring:message code="pl.coderslab.christmass.enterPass"/>,
+              minlength: <spring:message code="pl.coderslab.christmass.enterPassLength"/>
             }
           }
       });
@@ -146,13 +158,5 @@
     </form>
     <div class="text-center small">Don't have an account? <a href="/registration">Sign up</a></div>
   </div>
-
-<%--  <form method="post" action="/login" id="form">--%>
-<%--  <div><label> Email <input type="email" name="username"/> </label></div>--%>
-<%--  <div><label> Password: <input type="password" name="password"/> </label></div>--%>
-<%--  <div><input type="submit" value="Sign In"/></div>--%>
-
-<%--</form>--%>
-
 </body>
 </html>

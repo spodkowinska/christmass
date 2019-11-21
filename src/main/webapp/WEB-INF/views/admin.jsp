@@ -26,7 +26,7 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </nav>
-Language : <a href="?language=en">EN</a>|<a href="?language=pl">PL</a>
+<%--Language : <a href="?language=en">EN</a>|<a href="?language=pl">PL</a>--%>
 <div class="container">
     <div class="container justify-content-center">
 

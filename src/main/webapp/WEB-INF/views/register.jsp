@@ -1,5 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,12 +120,13 @@
 <body>
 <div class="signup-form">
     <form:form modelAttribute="user" method="post">
-    <h2>Create Account</h2>
-    <p class="lead">It takes about 30 secs to be able to take part </br>in our next party.</p>
+    <h2><spring:message code="pl.coderslab.christmass.loginCreate"/></h2>
+    <p class="lead"><spring:message code="pl.coderslab.christmass.loginMessage"/></p>
     <div class="form-group">
         <div class="input-group">
+            <spring:message code="pl.coderslab.christmass.firstname" var="firstname" />
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <form:input path="firstName" type="text" id="firstName" class="form-control" placeholder="First name"
+            <form:input path="firstName" type="text" id="firstName" class="form-control" placeholder="${firstname}"
                         required="required"
                         autofocus="autofocus"/>
             <form:errors path="firstName" css="color:red"/>
@@ -131,24 +134,27 @@
     </div>
     <div class="form-group">
         <div class="input-group">
+            <spring:message code="pl.coderslab.christmass.lastname" var="lastname" />
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <form:input path="lastName" type="text" id="lastName" class="form-control" placeholder="Last name"
+            <form:input path="lastName" type="text" id="lastName" class="form-control" placeholder="${lastname}"
                         required="required"/>
             <form:errors path="lastName" css="color:red"/>
         </div>
     </div>
     <div class="form-group">
         <div class="input-group">
+            <spring:message code="pl.coderslab.christmass.email" var="email" />
             <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
-            <form:input path="username" type="email" id="inputEmail" class="form-control" placeholder="Email Address"
+            <form:input path="username" type="email" id="inputEmail" class="form-control" placeholder="${email}"
                         required="required"/>
             <form:errors path="username" css="color:red"/>
         </div>
     </div>
     <div class="form-group">
         <div class="input-group">
+            <spring:message code="pl.coderslab.christmass.password" var="pass" />
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <form:input path="password" type="password" id="inputPassword" class="form-control" placeholder="Password"
+            <form:input path="password" type="password" id="inputPassword" class="form-control" placeholder="${pass}"
                         required="required"/>
             <form:errors path="password" css="color:red"/>
         </div>
@@ -159,16 +165,16 @@
 					<i class="fa fa-lock"></i>
 					<i class="fa fa-check"></i>
 				</span>
-
-            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password"
+            <spring:message code="pl.coderslab.christmass.confirmPassword" var="cpass" />
+            <input type="password" class="form-control" name="confirm_password" placeholder="${cpass}"
                    required="required">
         </div>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+        <button type="submit" class="btn btn-primary btn-block btn-lg"><spring:message code="pl.coderslab.christmass.sign"/></button>
     </div>
 
-    <div class="text-center">Already have an account? <a href="/login">Login here</a>.</div>
+    <div class="text-center"><spring:message code="pl.coderslab.christmass.haveAccount"/> <a href="/login"><spring:message code="pl.coderslab.christmass.loginhere" /></a>.</div>
 </div>
 
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

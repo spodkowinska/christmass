@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -129,8 +129,18 @@
                                                 <b><c:out value="${santaPair.get(userId)}"/></b>
                                                 <spring:message code="pl.coderslab.christmass.santa.2"/></p><br>
                                             <c:if test="${presentsByGiver.containsKey(userId)}">
-                                                <p><spring:message code="pl.coderslab.christmass.santa.3"/>
-                                                <c:out value="${presentsByGiver.get(userId)}"/> </p>
+                                                <spring:message code="pl.coderslab.christmass.santa.3"/>
+                                                    <ul>
+                                                <li>
+                                                    <c:out value="${presentsByGiver.get(userId).get(0)}"/>
+                                                </li>
+                                                <li>
+                                                    <c:out value="${presentsByGiver.get(userId).get(1)}"/>
+                                                </li>
+                                                <li>
+                                                    <c:out value="${presentsByGiver.get(userId).get(2)}"/>
+                                                </li>
+                                            </ul>
                                             </c:if>
 
                                         </c:when>

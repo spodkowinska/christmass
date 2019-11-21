@@ -13,10 +13,7 @@ import pl.coderslab.christmass.santa.SantaService;
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/user")
@@ -109,11 +106,13 @@ public class UserController {
     }
 
     @ModelAttribute("presentsByGiver")
-    public HashMap<Long, String> presentsByGiversId() {
-        HashMap<Long,String> presentsByGiversId = new HashMap<>();
+    public HashMap<Long,List <String>> presentsByGiversId() {
+        List<String> presentsDescriptions;
+        HashMap<Long,List<String>> presentsByGiversId = new HashMap<>();
         List<Present> presents= presentService.findAll();
 
-        presents.stream().forEach(p->presentsByGiversId.put(giversId(p.getUser().getId()), p.getDescription()));
+        presents.stream().forEach(p->presentsByGiversId.put(giversId(p.getUser().getId()),
+                new ArrayList<>(Arrays.asList(p.getDescription(), p.getDescription2(), p.getDescription3()))));
         return presentsByGiversId;
     }
 
