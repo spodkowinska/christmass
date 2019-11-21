@@ -109,6 +109,11 @@
         color: #4aba70;
       }
     </style>
+    <script>
+      jQuery.extend(jQuery.messages, {
+        required: "This field is required.",
+      });
+    </script>
     <script type="text/javascript">
       $(document).ready(function() {
         $("#form").validate({
@@ -136,6 +141,7 @@
       });
       });
     </script>
+
   </head>
   <body>
 

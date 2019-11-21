@@ -1,6 +1,7 @@
 package pl.coderslab.christmass.user;
 
 import org.hibernate.validator.constraints.UniqueElements;
+import pl.coderslab.christmass.event.Event;
 import pl.coderslab.christmass.present.Present;
 
 import javax.persistence.*;
@@ -45,6 +46,11 @@ public class User implements Serializable {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_event", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id"))
+    private Set<Event> event;
 
 
 
