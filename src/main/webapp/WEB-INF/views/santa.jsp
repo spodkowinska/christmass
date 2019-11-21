@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <title>Become Santa!</title>
     <script src="<c:url value="/webjars/jquery/3.0.0/jquery.min.js"/>"></script>
@@ -12,9 +12,9 @@
 </head>
 <body>
 <nav class="navbar navbar-light" style="background-color: #f71317">
-    <a class="text-xs font-weight-bold mb-1" style="color: white">Very Merry Christmas ${user.fullName}!</a>
+    <a class="text-xs font-weight-bold mb-1" style="color: white"><spring:message code="pl.coderslab.christmass.merryChristmas"/> ${user.fullName}!</a>
     <form action="<c:url value="/logout"/>" method="post" class="form-inline">
-        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout">Logout</button>
+        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout"><spring:message code="pl.coderslab.christmass.logout"/></button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </nav>
@@ -39,10 +39,10 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <p class="text-xs font-weight-bold text-success text-uppercase mb-1 text-center">
-                                            Home
+                                            <spring:message code="pl.coderslab.christmass.homePage.1"/>
                                         </p>
                                         <div class="h5 mb-0 text-gray-800 text-center" id="total_income">
-                                            Come back to main site
+                                            <spring:message code="pl.coderslab.christmass.homePage.2"/>
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -62,10 +62,10 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <p class="text-xs font-weight-bold text-success text-center text-uppercase mb-1">
-                                            Whose Santa are you?
+                                            <spring:message code="pl.coderslab.christmass.santaPage.1"/>
                                         </p>
                                         <div class="mb-0 text-gray-800 text-center">
-                                            Check it out
+                                            <spring:message code="pl.coderslab.christmass.santaPage.2"/>
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -81,10 +81,10 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <p class="text-xs font-weight-bold text-success text-uppercase mb-1 text-center">
-                                            What's there for you?
+                                            <spring:message code="pl.coderslab.christmass.presentPage.1"/>
                                         </p>
                                         <div class="h5 mb-0 text-gray-800 text-center" id="total_costs">
-                                            Give some advice to your Santa!
+                                            <spring:message code="pl.coderslab.christmass.presentPage.2"/>
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -118,8 +118,9 @@
                                             <p><spring:message code="pl.coderslab.christmass.ready.2"/></p>
                                             <td>
                                                 <btn>
-                                                    <a class="btn btn-danger btn-block" href="/user/becomeSanta">Become
-                                                        someone's Santa!</a>
+                                                    <a class="btn btn-danger btn-block" href="/user/becomeSanta">
+                                                        <spring:message code="pl.coderslab.christmass.becomeSantaBtn"/>
+                                                    </a>
                                                 </btn>
                                             </td>
                                         </c:when>

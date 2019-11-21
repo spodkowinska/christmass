@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +14,9 @@
 </head>
 <body>
 <nav class="navbar navbar-light" style="background-color: #f71317">
-    <a class="text-xs font-weight-bold mb-1" style="color: white">Very Merry Christmas ${user.fullName}!</a>
+    <a class="text-xs font-weight-bold mb-1" style="color: white"><spring:message code="pl.coderslab.christmass.merryChristmas"/> ${user.fullName}!</a>
     <form action="<c:url value="/logout"/>" method="post" class="form-inline">
-        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout">Logout</button>
+        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout"><spring:message code="pl.coderslab.christmass.logout"/></button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </nav>
@@ -39,16 +40,16 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <p class="text-xs font-weight-bold text-center text-success text-uppercase mb-1">
-                                            Home
-                                        </p>
-                                        <div class="mb-0 text-center text-gray-800">
-                                            Come back to main site
+                                            <p class="text-xs font-weight-bold text-success text-uppercase mb-1 text-center">
+                                                <spring:message code="pl.coderslab.christmass.homePage.1"/>
+                                            </p>
+                                            <div class="mb-0 text-gray-800 text-center">
+                                                <spring:message code="pl.coderslab.christmass.homePage.2"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                    </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -59,11 +60,11 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <p class="text-xs font-weight-bold text-center text-success text-uppercase mb-1">
-                                            Whose Santa are you?
+                                        <p class="text-xs font-weight-bold text-success text-center text-uppercase mb-1">
+                                            <spring:message code="pl.coderslab.christmass.santaPage.1"/>
                                         </p>
-                                        <div class="h5 mb-0 text-gray-800 text-center" id="total_income">
-                                            Check it out
+                                        <div class="h5 mb-0 text-gray-800 text-center">
+                                            <spring:message code="pl.coderslab.christmass.santaPage.2"/>
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -80,11 +81,11 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <p class="text-xs font-weight-bold text-center text-success text-uppercase mb-1">
-                                            What's there for you?
+                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1 text-center">
+                                            <spring:message code="pl.coderslab.christmass.presentPage.1"/>
                                         </p>
                                         <div class="h5 mb-0 text-gray-800 text-center" id="total_costs">
-                                            Give some advice to your Santa!
+                                            <spring:message code="pl.coderslab.christmass.presentPage.2"/>
                                         </div>
                                     </div>
                                     <div class="col-auto">

@@ -62,8 +62,8 @@ public class UserController {
 
     @PostMapping("/addPresent")
     public String addPresentForm(@Valid @ModelAttribute Present present1,
-                                 @Valid @ModelAttribute Present present2,
-                                 @Valid @ModelAttribute Present present3,
+//                                 @Valid @ModelAttribute Present present2,
+//                                 @Valid @ModelAttribute Present present3,
                                  @AuthenticationPrincipal CurrentUser customUser) {
         User entityUser = customUser.getUser();
         Long userId= entityUser.getId();
@@ -73,8 +73,8 @@ public class UserController {
         }
         present1.setUser(entityUser);
         presentService.create(present1);
-        presentService.create(present2);
-        presentService.create(present3);
+//        presentService.create(present2);
+//        presentService.create(present3);
         return "redirect:home";
     }
 

@@ -13,9 +13,27 @@ public class Present {
     private Long id;
 
     private String description;
+    private String description2;
+    private String description3;
 
     @ManyToOne
     private User user;
+
+    public String getDescription2() {
+        return description2;
+    }
+
+    public void setDescription2(String description2) {
+        this.description2 = description2;
+    }
+
+    public String getDescription3() {
+        return description3;
+    }
+
+    public void setDescription3(String description3) {
+        this.description3 = description3;
+    }
 
     public Long getId() { return id; }
 

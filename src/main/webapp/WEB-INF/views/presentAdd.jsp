@@ -1,7 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fotm" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +15,9 @@
 </head>
 <body>
 <nav class="navbar navbar-light" style="background-color: #f71317">
-    <a class="text-xs font-weight-bold mb-1" style="color: white">Very Merry Christmas ${user.fullName}!</a>
+    <a class="text-xs font-weight-bold mb-1" style="color: white"><spring:message code="pl.coderslab.christmass.merryChristmas"/> ${user.fullName}!</a>
     <form action="<c:url value="/logout"/>" method="post" class="form-inline">
-        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout">Logout</button>
+        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout"><spring:message code="pl.coderslab.christmass.logout"/></button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </nav>
@@ -42,11 +43,11 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <p class="text-xs font-weight-bold text-center text-success text-uppercase mb-1">
-                                            Home
+                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1 text-center">
+                                            <spring:message code="pl.coderslab.christmass.homePage.1"/>
                                         </p>
-                                        <div class="h5 mb-0 text-center text-gray-800">
-                                            Come back to main site
+                                        <div class="h5 mb-0 text-gray-800 text-center" id="total_income">
+                                            <spring:message code="pl.coderslab.christmass.homePage.2"/>
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -64,10 +65,10 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <p class="text-xs font-weight-bold text-success text-center text-uppercase mb-1">
-                                            Whose Santa are you?
+                                            <spring:message code="pl.coderslab.christmass.santaPage.1"/>
                                         </p>
                                         <div class="h5 mb-0 text-gray-800 text-center">
-                                            Check it out
+                                            <spring:message code="pl.coderslab.christmass.santaPage.2"/>
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -84,10 +85,10 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <p class="text-xs font-weight-bold text-center text-success text-uppercase mb-1">
-                                            What's there for you?
+                                            <spring:message code="pl.coderslab.christmass.presentPage.1"/>
                                         </p>
                                         <div class="mb-0 text-gray-800 text-center" id="total_costs">
-                                            Give some advice to your Santa!
+                                            <spring:message code="pl.coderslab.christmass.presentPage.2"/>
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -104,16 +105,21 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 text-danger text-center">
-                                    Help your Santa by preparing him some hints</h6>
+                                    <spring:message code="pl.coderslab.christmass.helpSanta"/>
+                                    </h6>
                             </div>
                             <div class="card-body">
                                 <div class="text-left">
+                                    <spring:message code="pl.coderslab.christmass.present.2" var="placeholder" />
                                     <form:form modelAttribute="present1" method="post">
                                     <div class="form-group shadow-textarea">
-                                        <label for="exampleFormControlTextarea6">Present 1</label>
-                                        <form:textarea path="description" class="form-control z-depth-1"
-                                                       id="exampleFormControlTextarea6" rows="3"
-                                                       placeholder="What's it that you wish for?"></form:textarea>
+                                        <label for="present1">
+                                            <spring:message code="pl.coderslab.christmass.present.1"/>
+                                        </label>
+<%--                                        <form:textarea path="description" class="form-control z-depth-1"--%>
+<%--                                                       id="present1" rows="3"--%>
+<%--                                                       placeholder="${placeholder}">--%>
+<%--                                        </form:textarea>--%>
 
                                     </div>
 
@@ -122,10 +128,9 @@
                                         <form:form modelAttribute="present2" method="post">
                                         <div class="form-group shadow-textarea">
                                             <label for="exampleFormControlTextarea6">Present 2</label>
-                                            <form:textarea path="description" class="form-control z-depth-1"
+                                            <form:textarea path="description2" class="form-control z-depth-1"
                                                            id="exampleFormControlTextarea6" rows="3"
                                                            placeholder="What's your biggest desire?"></form:textarea>
-
                                         </div>
 
 
@@ -133,14 +138,10 @@
                                             <form:form modelAttribute="present3" method="post">
                                                 <div class="form-group shadow-textarea">
                                                     <label for="exampleFormControlTextarea6">Present 3</label>
-                                                    <form:textarea path="description" class="form-control z-depth-1"
+                                                    <form:textarea path="description3" class="form-control z-depth-1"
                                                                    id="exampleFormControlTextarea6" rows="3"
                                                                    placeholder="What sparks joy in ya?"></form:textarea>
-                                                    <form:errors path="description" element="div"
-                                                                 cssStyle="color:red"/>
                                                 </div>
-
-
                                                 <input type="submit" value="I want that!"
                                                        class="btn btn-danger btn-block">
                                             </form:form>
