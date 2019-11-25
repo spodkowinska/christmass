@@ -9,22 +9,30 @@ import javax.persistence.Id;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    int name;
+    Long id;
+    String hashedId;
+    String name;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
+    }
+    public String getHashedId() {
+        return hashedId;
+    }
+
+    public void setHashedId(String hashedId) {
+        this.hashedId = hashedId;
     }
 }

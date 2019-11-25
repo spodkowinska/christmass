@@ -64,7 +64,7 @@
                                         <p class="text-xs font-weight-bold text-success text-center text-uppercase mb-1">
                                             <spring:message code="pl.coderslab.christmass.santaPage.1"/>
                                         </p>
-                                        <div class="mb-0 text-gray-800 text-center">
+                                        <div class="h5 mb-0 text-gray-800 text-center">
                                             <spring:message code="pl.coderslab.christmass.santaPage.2"/>
                                         </div>
                                     </div>
@@ -95,8 +95,9 @@
                         </div>
                     </div>
 
-                    <div class="container mt-4">
-                        <div class="card">
+
+                    <div class="col-lg-12 mb-4">
+                        <div class="card shadow mb-4">
                             <div class="card-body">
                                 <div class="form-group col-md-12 align-content-center">
 
@@ -127,7 +128,7 @@
                                         <c:when test="${user.status == \"SANTA\"}">
                                             <p><spring:message code="pl.coderslab.christmass.santa.1"/>
                                                 <b><c:out value="${santaPair.get(userId)}"/></b>
-                                                <spring:message code="pl.coderslab.christmass.santa.2"/></p><br>
+<%--                                                <spring:message code="pl.coderslab.christmass.santa.2"/></p><br>--%>
                                             <c:if test="${presentsByGiver.containsKey(userId)}">
                                                 <spring:message code="pl.coderslab.christmass.santa.3"/>
                                                     <ul>
@@ -146,7 +147,7 @@
                                         </c:when>
 
                                     </c:choose>
-
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -156,5 +157,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>

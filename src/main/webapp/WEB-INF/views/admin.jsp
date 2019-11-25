@@ -55,6 +55,7 @@
                     <table class="table table-hover">
                         <tr>
                             <th>Person</th>
+                            <th>Event</th>
                             <th>Change Status: </br>UNPAID/PAID/READY/SANTA</th>
                             <th>Presents</th>
                             <th>Delete user</th>
@@ -63,6 +64,7 @@
 
                             <tr>
                                 <td>${user.fullName}</td>
+                                <td><c:forEach items="${user.event}" var="event"> ${event.id}<br></c:forEach></td>
                                 <td>
                                     <c:choose>
                                         <c:when test="${user.status eq \"UNPAID\"}">
@@ -98,7 +100,14 @@
                         </c:forEach>
 
                     </table>
-                    <a class="btn btn-danger" href="/admin/joinInPairs">Join in Pairs!</a>
+                    <form method="get" action="/admin/joinInPairs" >
+                            <select name="event">
+                                <c:forEach items="${events}" var="event" >
+                                    <option value="${event.id}" >${event.name}</option>
+                                </c:forEach>
+                            </select>
+                        <input type="submit" class="btn btn-danger" value="Join in Pairs!">
+                    </form>
                 </div>
             </div>
 

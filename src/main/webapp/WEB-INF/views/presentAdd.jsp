@@ -87,7 +87,7 @@
                                         <p class="text-xs font-weight-bold text-center text-success text-uppercase mb-1">
                                             <spring:message code="pl.coderslab.christmass.presentPage.1"/>
                                         </p>
-                                        <div class="mb-0 text-gray-800 text-center" id="total_costs">
+                                        <div class="h5 mb-0 text-gray-800 text-center" id="total_costs">
                                             <spring:message code="pl.coderslab.christmass.presentPage.2"/>
                                         </div>
                                     </div>
@@ -104,7 +104,7 @@
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 text-danger text-center">
+                                <h6 class="h5 m-0 text-danger text-center">
                                     <spring:message code="pl.coderslab.christmass.helpSanta"/>
                                     </h6>
                             </div>

@@ -14,6 +14,17 @@ public class Santa {
 
     private Long gettersId;
 
+//    private int eventId;
+//
+//
+//    public int getEventId() {
+//        return eventId;
+//    }
+//
+//    public void setEventId(int eventId) {
+//        this.eventId = eventId;
+//    }
+
     public Long getId() { return id;}
 
     public void setId(Long id) {

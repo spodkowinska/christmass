@@ -21,10 +21,10 @@ import javax.validation.Valid;
 @Transactional
 public class homeController {
 
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Autowired
-    public homeController(UserService userService) {
+    public homeController(UserServiceImpl userService) {
         this.userService = userService;
     }
 
@@ -44,12 +44,16 @@ public class homeController {
     }
 
     @PostMapping("/registration")
-    public String registerForm( @Valid @ModelAttribute User user, BindingResult result) {
+    public String registerForm( @Valid @ModelAttribute User user,
+//                                @PathVariable String hashedId,
+                                BindingResult result) {
         if (result.hasErrors()) {
             return "register";
         }
+        String hashedId = "hash1";
         userService.saveUser(user);
-        return "redirect:/user/home";
+        userService.addEvent(user,hashedId);
+        return "redirect:user/home";
     }
 
     @GetMapping("/login")

@@ -1,11 +1,14 @@
 package pl.coderslab.christmass.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.christmass.event.Event;
+import pl.coderslab.christmass.event.EventService;
 import pl.coderslab.christmass.message.Message;
 import pl.coderslab.christmass.message.MessageService;
 import pl.coderslab.christmass.present.PresentService;
@@ -24,21 +27,23 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private AdminService adminService;
+//    private AdminService adminService;
     private UserServiceImpl userService;
     private SantaService santaService;
     private PresentService presentService;
     private MessageService messageService;
+    private EventService eventService;
 
     @Autowired
-    public AdminController(AdminService adminService, UserServiceImpl userService,
+    public AdminController( UserServiceImpl userService,
                            SantaService santaService, PresentService presentService,
-                           MessageService messageService) {
-        this.adminService = adminService;
+                           MessageService messageService, EventService eventService) {
+
         this.userService = userService;
         this.santaService = santaService;
         this.presentService = presentService;
         this.messageService = messageService;
+        this.eventService = eventService;
     }
 
 //@TODO change status list
@@ -104,12 +109,16 @@ public class AdminController {
 
     //@TODO what should be there?
     @GetMapping("/joinInPairs")
-    public String joinInPairs() {
+    public String join(@RequestParam int event) {
         if (santaService.findAllSantas().size() > 0) {
-            return "redirect:user/home";
+            return "redirect:../../user/home";
         } else {
-            santaService.joinInPairs(userService.findByStatus(Status.PAID));
-            userService.findByStatus(Status.PAID).stream().forEach(n -> userService.changeStatus(Status.READY, n.getId()));
+//            Long id = Long.parseLong(eventId);
+        int id = event;
+            santaService.joinInPairs(userService.findByStatus(Status.PAID), (long)id);
+            userService.findByStatus(Status.PAID).stream().filter(u->u.getEvent().contains(eventService.findById((long)
+                    id)))
+                    .forEach(n -> userService.changeStatus(Status.READY, n.getId()));
             return "redirect:usersList";
         }
     }
@@ -130,7 +139,7 @@ public class AdminController {
 
     @ModelAttribute("users")
     public List<User> getUsers() {
-        return adminService.findAllUsers();
+        return userService.findAllUsers();
     }
 
     @ModelAttribute("Status")
@@ -138,5 +147,9 @@ public class AdminController {
         return Arrays.asList(Status.UNPAID, Status.PAID, Status.READY, Status.SANTA);
     }
 
+    @ModelAttribute("events")
+    public List<Event> getEvents() {
+        return eventService.findAll();
+    }
 
 }

@@ -2,7 +2,9 @@ package pl.coderslab.christmass.santa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.coderslab.christmass.event.EventRepository;
 import pl.coderslab.christmass.user.User;
+import pl.coderslab.christmass.user.UserRepository;
 
 import java.util.*;
 
@@ -11,10 +13,14 @@ import java.util.*;
 public class SantaService {
 
     private SantaRepository santaRepository;
+    private EventRepository eventRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public SantaService(SantaRepository santaRepository) {
+    public SantaService(SantaRepository santaRepository, EventRepository eventRepository, UserRepository userRepository) {
         this.santaRepository = santaRepository;
+        this.eventRepository = eventRepository;
+        this.userRepository = userRepository;
     }
 
     public void create(Santa santa) {
@@ -37,13 +43,20 @@ public class SantaService {
         return santaRepository.findAll();
     }
 
-    public void joinInPairs(List<User> users) {
+    public void joinInPairs(List<User> users,Long eventId) {
+        List<User>usersFromEvent=new ArrayList<>();
+        for(User user : users){
+            if(user.getEvent().contains(eventRepository.findFirstById(eventId))){
+                usersFromEvent.add(user);
+            }
+        }
         Random random = new Random();
-        int randomInt = random.nextInt(users.size() - 1) + 1;
+        int randomInt = random.nextInt(usersFromEvent.size()-1)+1;
+        System.out.println(randomInt);
         Integer counter = 0;
         Map<Integer, Long> randomGiver = new HashMap<>();
         Map<Long, Long> giverGetter = new HashMap<>();
-        for (User user : users) {
+        for (User user : usersFromEvent) {
             randomGiver.put(counter, user.getId());
             counter++;
         }

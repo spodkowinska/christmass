@@ -47,6 +47,8 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_event", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "event_id"))
@@ -55,6 +57,14 @@ public class User implements Serializable {
 
 
 
+
+    public Set<Event> getEvent() {
+        return event;
+    }
+
+    public void setEvent(Set<Event> event) {
+        this.event = event;
+    }
     public Set<Role> getRoles() {
         return roles;
     }
