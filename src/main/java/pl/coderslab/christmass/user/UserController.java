@@ -46,13 +46,17 @@ public class UserController {
     @GetMapping("/addPresent")
     public String addPresent(@AuthenticationPrincipal CurrentUser currentUser,
                              Model model) {
-        Present present1 = new Present();
-        Present present2 = new Present();
-        Present present3 = new Present();
-        model.addAttribute("present1", present1);
-        model.addAttribute("present2", present2);
-        model.addAttribute("present3", present3);
         User entityUser = currentUser.getUser();
+        Long userId =entityUser.getId();
+        Present present1 = new Present();
+        if(presentService.findByUserId(userId)!=null){
+            present1 =presentService.findByUserId(userId);
+        }
+//        Present present2 = new Present();
+//        Present present3 = new Present();
+        model.addAttribute("present1", present1);
+//        model.addAttribute("present2", present2);
+//        model.addAttribute("present3", present3);
         model.addAttribute("user", entityUser);
         return "presentAdd";
     }

@@ -124,7 +124,7 @@
 
 
                                     <div class="text-left">
-                                        <form:form modelAttribute="present2" method="post">
+                                        <form:form modelAttribute="present1" method="post">
                                         <div class="form-group shadow-textarea">
                                             <label for="exampleFormControlTextarea6">
                                                 <spring:message code="pl.coderslab.christmass.present.3"/>
@@ -136,7 +136,7 @@
 
 
                                         <div class="text-left">
-                                            <form:form modelAttribute="present3" method="post">
+                                            <form:form modelAttribute="present1" method="post">
                                                 <div class="form-group shadow-textarea">
                                                     <label for="exampleFormControlTextarea6">
                                                         <spring:message code="pl.coderslab.christmass.present.4"/>
