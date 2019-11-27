@@ -9,11 +9,11 @@
     <%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
     <script src="<c:url value="/webjars/jquery/3.0.0/jquery.min.js"/>"></script>
     <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
-    <script src="<c:url value="/resources/js/iziToast.min.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/static/iziToast.min.js"/>" type="text/javascript"></script>
 
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet"/>
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
-    <link href="<c:url value="/resources/css/iziToast.min.css"/>" rel="stylesheet"/>
+    <link href="<c:url value="/static/iziToast.min.css"/>" rel="stylesheet"/>
 
 </head>
 <body>

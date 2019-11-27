@@ -10,14 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <title>Registration</title>
-    <script src="iziToast.min.js" type="text/javascript"></script>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="iziToast.min.css">
+
     <script src="js/script.js"></script>
     <style type="text/css">
         body {
@@ -188,11 +188,6 @@
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 </form:form>
-
-<button class ="btn btn-success" onclick="iziToast.show({
-       title: 'Hey', message: 'What would you like to add?'
-                                                });"></button>
-
 
 </body>
 

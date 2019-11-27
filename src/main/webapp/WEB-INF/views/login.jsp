@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
     <script src="<c:url value="/resources/js/iziToast.min.js"/>" type="text/javascript"></script>
 
-<%--    <link href="<c:url value="/resources/css/iziToast.min.css"/>" rel="stylesheet"/>--%>
+    <link href="<c:url value="/resources/css/iziToast.min.css"/>" rel="stylesheet"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -174,11 +174,11 @@
 
 </head>
 
-<c:if test="${registration==1}">
+<c:if test="${param.registration eq 1}">
 <body onload="iziToast.show({title: 'Hey',message: 'What would you like to add?'
 });">
 </c:if>
-<c:if test="${registration!=1}">
+<c:if test="${param.registration!=1}">
 <body>
 </c:if>
 

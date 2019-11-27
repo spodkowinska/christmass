@@ -76,7 +76,7 @@ public class UserController {
         presentService.create(present1);
 //        presentService.create(present2);
 //        presentService.create(present3);
-        return "redirect:addPresent";
+        return "redirect:addPresent?present=1";
     }
 
     @GetMapping("/santa")

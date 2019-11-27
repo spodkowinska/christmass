@@ -58,11 +58,7 @@ public class homeController {
     }
 
     @GetMapping("/login")
-    public String login(Model model, @RequestParam (value="registration", required = false) Integer registration) {
-        System.out.println(registration);
-        if(registration!=null && registration.equals(1)){
-            model.addAttribute("registration", 1);
-        }
+    public String login(Model model) {
         User user = new User();
         model.addAttribute("user", user);
         return "login";
