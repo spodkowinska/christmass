@@ -10,10 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <title>Registration</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="iziToast.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="iziToast.min.css">
+    <script src="js/script.js"></script>
     <style type="text/css">
         body {
             color: #999;
@@ -124,7 +129,7 @@
     <p class="lead"><spring:message code="pl.coderslab.christmass.loginMessage"/></p>
     <div class="form-group">
         <div class="input-group">
-            <spring:message code="pl.coderslab.christmass.firstname" var="firstname" />
+            <spring:message code="pl.coderslab.christmass.firstname" var="firstname"/>
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
             <form:input path="firstName" type="text" id="firstName" class="form-control" placeholder="${firstname}"
                         required="required"
@@ -134,7 +139,7 @@
     </div>
     <div class="form-group">
         <div class="input-group">
-            <spring:message code="pl.coderslab.christmass.lastname" var="lastname" />
+            <spring:message code="pl.coderslab.christmass.lastname" var="lastname"/>
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
             <form:input path="lastName" type="text" id="lastName" class="form-control" placeholder="${lastname}"
                         required="required"/>
@@ -143,7 +148,7 @@
     </div>
     <div class="form-group">
         <div class="input-group">
-            <spring:message code="pl.coderslab.christmass.email" var="email" />
+            <spring:message code="pl.coderslab.christmass.email" var="email"/>
             <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
             <form:input path="username" type="email" id="inputEmail" class="form-control" placeholder="${email}"
                         required="required"/>
@@ -152,7 +157,7 @@
     </div>
     <div class="form-group">
         <div class="input-group">
-            <spring:message code="pl.coderslab.christmass.password" var="pass" />
+            <spring:message code="pl.coderslab.christmass.password" var="pass"/>
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
             <form:input path="password" type="password" id="inputPassword" class="form-control" placeholder="${pass}"
                         required="required"/>
@@ -165,21 +170,28 @@
 					<i class="fa fa-lock"></i>
 					<i class="fa fa-check"></i>
 				</span>
-            <spring:message code="pl.coderslab.christmass.confirmPassword" var="cpass" />
+            <spring:message code="pl.coderslab.christmass.confirmPassword" var="cpass"/>
             <input type="password" class="form-control" name="confirm_password" placeholder="${cpass}"
                    required="required">
         </div>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block btn-lg"><spring:message code="pl.coderslab.christmass.sign"/></button>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="successClick"><spring:message
+                code="pl.coderslab.christmass.sign"/></button>
     </div>
 
-    <div class="text-center"><spring:message code="pl.coderslab.christmass.haveAccount"/> <a href="/login"><spring:message code="pl.coderslab.christmass.loginhere" /></a>.</div>
+    <div class="text-center"><spring:message code="pl.coderslab.christmass.haveAccount"/> <a
+            href="/login"><spring:message code="pl.coderslab.christmass.loginhere"/></a>.
+    </div>
 </div>
 
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 </form:form>
+
+<button class ="btn btn-success" onclick="iziToast.show({
+       title: 'Hey', message: 'What would you like to add?'
+                                                });"></button>
 
 
 </body>

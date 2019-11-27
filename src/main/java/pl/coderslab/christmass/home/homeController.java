@@ -1,6 +1,7 @@
 package pl.coderslab.christmass.home;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -53,15 +54,32 @@ public class homeController {
         String hashedId = "hash1";
         userService.saveUser(user);
         userService.addEvent(user,hashedId);
-        return "redirect:user/home";
+        return "redirect:login?registration=1";
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(Model model, @RequestParam (value="registration", required = false) Integer registration) {
+        System.out.println(registration);
+        if(registration!=null && registration.equals(1)){
+            model.addAttribute("registration", 1);
+        }
         User user = new User();
         model.addAttribute("user", user);
         return "login";
     }
+
+//    @GetMapping("/login")
+//    public String login(Model model) {
+//        User user = new User();
+//        model.addAttribute("user", user);
+//        return "login";
+//    }
+//    @GetMapping("/login/{param}")
+//    public String login(Model model, @Path) {
+//        User user = new User();
+//        model.addAttribute("user", user);
+//        return "login";
+//    }
 
     @GetMapping("/logoutSuccess")
     public String logout() {

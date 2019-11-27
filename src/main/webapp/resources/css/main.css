@@ -3,6 +3,9 @@
 }
 .error {color: red}
 
+.grey {background-color: #eeeeee
+}
+
 body {
     background-image: url("/img/207.jpg");
 }

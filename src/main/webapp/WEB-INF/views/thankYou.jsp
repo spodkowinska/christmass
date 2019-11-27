@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%--
   Created by IntelliJ IDEA.
@@ -14,17 +15,18 @@
 <%--    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">--%>
 </head>
 <body style="background-image: url('/img/207.jpg')">
+<div class ="card body grey">
 <div class="card">
     <div class="card-body">
-        <h4>Thank you for using Christmas Planner</h4>
+        <h4><spring:message code="pl.coderslab.christmass.thankyou"/></h4>
     </div>
 </div>
 
-
 <div class="card">
     <div class="card-body">
-        <a href="/login">Login again</a>
+        <a href="/login"><spring:message code="pl.coderslab.christmass.logIn"/></a>
     </div>
+</div>
 </div>
 </body>
 </html>

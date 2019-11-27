@@ -9,9 +9,11 @@
     <%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
     <script src="<c:url value="/webjars/jquery/3.0.0/jquery.min.js"/>"></script>
     <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
-    <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
+    <script src="<c:url value="/resources/js/iziToast.min.js"/>" type="text/javascript"></script>
 
+    <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet"/>
+    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
+    <link href="<c:url value="/resources/css/iziToast.min.css"/>" rel="stylesheet"/>
 
 </head>
 <body>
@@ -42,7 +44,7 @@
 
 
                     <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/home'">
-                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
+                        <div class="highlightOnHover grey card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
@@ -61,67 +63,67 @@
                         </div>
                     </div>
 
-                <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/santa'">
-                    <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <p class="text-xs font-weight-bold text-success text-center text-uppercase mb-1">
-                                        <spring:message code="pl.coderslab.christmass.santaPage.1"/>
-                                    </p>
-                                    <div class="h5 mb-0 text-gray-800 text-center">
-                                        <spring:message code="pl.coderslab.christmass.santaPage.2"/>
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/santa'">
+                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <p class="text-xs font-weight-bold text-success text-center text-uppercase mb-1">
+                                            <spring:message code="pl.coderslab.christmass.santaPage.1"/>
+                                        </p>
+                                        <div class="h5 mb-0 text-gray-800 text-center">
+                                            <spring:message code="pl.coderslab.christmass.santaPage.2"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                    <div class="col-auto">
+                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/addPresent'">
-                    <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <p class="text-xs font-weight-bold text-success text-uppercase mb-1 text-center">
-                                        <spring:message code="pl.coderslab.christmass.presentPage.1"/>
-                                    </p>
-                                    <div class="h5 mb-0 text-gray-800 text-center" id="total_costs">
-                                        <spring:message code="pl.coderslab.christmass.presentPage.2"/>
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/addPresent'">
+                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <p class="text-xs font-weight-bold text-success text-uppercase mb-1 text-center">
+                                            <spring:message code="pl.coderslab.christmass.presentPage.1"/>
+                                        </p>
+                                        <div class="h5 mb-0 text-gray-800 text-center" id="total_costs">
+                                            <spring:message code="pl.coderslab.christmass.presentPage.2"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                    <div class="col-auto">
+                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-12 mb-4">
+                    <div class="col-lg-12 mb-4">
 
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-danger">Ho ho ho ho!</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 30rem;"
-                                     src="/img/Merry-Christmas.jpg">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-danger">Ho ho ho ho!</h6>
                             </div>
-                            <p><spring:message code="pl.coderslab.christmass.home.greetings"/>
-                                <br> <spring:message code="pl.coderslab.christmass.home.greetingsInfo"/>
-                            </p>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 30rem;"
+                                         src="/img/Merry-Christmas.jpg">
+                                </div>
+                                <p><spring:message code="pl.coderslab.christmass.home.greetings"/>
+                                    <br> <spring:message code="pl.coderslab.christmass.home.greetingsInfo"/>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 </body>
