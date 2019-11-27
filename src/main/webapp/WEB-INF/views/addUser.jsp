@@ -23,7 +23,7 @@
 
     <div class="card mt-4">
         <div class="card-body">
-            <a href="/admin/usersList" class="btn btn-primary">UsersList</a>
+            <a href="${pageContext.request.contextPath}/admin/usersList" class="btn btn-primary">UsersList</a>
         </div>
     </div>
 

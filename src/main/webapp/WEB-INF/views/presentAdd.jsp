@@ -26,9 +26,11 @@
 <body>
 </c:if>
 <nav class="navbar navbar-light" style="background-color: #f71317">
-    <a class="text-xs font-weight-bold mb-1" style="color: white"><spring:message code="pl.coderslab.christmass.merryChristmas"/> ${user.fullName}!</a>
-    <form action="<c:url value="/logout"/>" method="post" class="form-inline">
-        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout"><spring:message code="pl.coderslab.christmass.logout"/></button>
+    <a class="text-xs font-weight-bold mb-1" style="color: white">
+        <spring:message code="pl.coderslab.christmass.merryChristmas"/> ${user.fullName}!</a>
+    <form action="<c:url value="${pageContext.request.contextPath}/logout"/>" method="post" class="form-inline">
+        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout">
+            <spring:message code="pl.coderslab.christmass.logout"/></button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </nav>
@@ -49,7 +51,7 @@
                 <div class="row">
 
 
-                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/home'">
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='${pageContext.request.contextPath}/user/home'">
                         <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -70,7 +72,7 @@
                     </div>
 
 
-                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/santa'">
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='${pageContext.request.contextPath}/user/santa'">
                         <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -90,7 +92,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/addPresent'">
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='${pageContext.request.contextPath}/user/addPresent'">
                         <div class="highlightOnHover grey card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -158,9 +160,7 @@
                                                 </div>
                                                 <spring:message code="pl.coderslab.christmass.presentBtn" var="presentSubmitBtn" />
                                                 <input type="submit" value= "${presentSubmitBtn}"
-                                                       class="btn btn-danger btn-block" onclick="iziToast.show({
-                                                       title: 'Hey', message: 'What would you like to add?'
-                                                });"/>
+                                                       class="btn btn-danger btn-block" />
                                             </form:form>
                                             </form:form>
                                             </form:form>
