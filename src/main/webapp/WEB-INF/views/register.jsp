@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script src="js/script.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
     <style type="text/css">
         body {
             color: #999;
-            background-image: url("/img/207.jpg");
+            background-image: url("${pageContext.request.contextPath}/img/207.jpg");
             /*background: #f5f5f5;*/
             font-family: 'Roboto', sans-serif;
         }
@@ -176,12 +176,12 @@
         </div>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block btn-lg" id="successClick"><spring:message
-                code="pl.coderslab.christmass.sign"/></button>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="successClick">
+            <spring:message code="pl.coderslab.christmass.sign"/></button>
     </div>
 
     <div class="text-center"><spring:message code="pl.coderslab.christmass.haveAccount"/> <a
-            href="/login"><spring:message code="pl.coderslab.christmass.loginhere"/></a>.
+            href="${pageContext.request.contextPath}/login"><spring:message code="pl.coderslab.christmass.loginhere"/></a>.
     </div>
 </div>
 

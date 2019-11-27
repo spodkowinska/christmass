@@ -185,7 +185,7 @@
 <spring:message code="pl.coderslab.christmass.password" var="pass"/>
 <spring:message code="pl.coderslab.christmass.signIn" var="signIn"/>
 <div class="login-form">
-    <form method="post" action="/login" id="form">
+    <form method="post" action="${pageContext.request.contextPath}/login" id="form">
         <div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
 
         <h4 class="modal-title"><spring:message code="pl.coderslab.christmass.logIn"/></h4>
@@ -196,14 +196,16 @@
             <input type="password" name="password" class="form-control" placeholder="${pass}">
         </div>
         <div class="form-group small clearfix">
-            <label class="checkbox-inline"><input type="checkbox"> <spring:message
-                    code="pl.coderslab.christmass.remember"/></label>
+            <label class="checkbox-inline"><input type="checkbox">
+                <spring:message code="pl.coderslab.christmass.remember"/>
+            </label>
 <%--            <a href="#" class="forgot-link"> <spring:message code="pl.coderslab.christmass.forgot"/></a>--%>
         </div>
         <input type="submit" class="btn btn-primary btn-block btn-lg" value="${signIn}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
-    <div class="text-center small"><spring:message code="pl.coderslab.christmass.noAccount"/> <a href="/registration">
+    <div class="text-center small"><spring:message code="pl.coderslab.christmass.noAccount"/>
+        <a href="${pageContext.request.contextPath}/registration">
         <spring:message code="pl.coderslab.christmass.sign"/></a></div>
 </div>
 </body>

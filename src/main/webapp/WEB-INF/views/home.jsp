@@ -9,20 +9,19 @@
     <%--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
     <script src="<c:url value="/webjars/jquery/3.0.0/jquery.min.js"/>"></script>
     <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
-    <script src="<c:url value="/static/iziToast.min.js"/>" type="text/javascript"></script>
 
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet"/>
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
-    <link href="<c:url value="/static/iziToast.min.css"/>" rel="stylesheet"/>
+
 
 </head>
 <body>
 <nav class="navbar navbar-light" style="background-color: #f71317">
-    <a class="text-xs font-weight-bold mb-1" style="color: white"><spring:message
-            code="pl.coderslab.christmass.merryChristmas"/> ${user.fullName}!</a>
-    <form action="<c:url value="/logout"/>" method="post" class="form-inline">
-        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout"><spring:message
-                code="pl.coderslab.christmass.logout"/></button>
+    <a class="text-xs font-weight-bold mb-1" style="color: white">
+        <spring:message code="pl.coderslab.christmass.merryChristmas"/> ${user.fullName}!</a>
+    <form action="<c:url value="${pageContext.request.contextPath}/logout"/>" method="post" class="form-inline">
+        <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout">
+            <spring:message code="pl.coderslab.christmass.logout"/></button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </nav>
@@ -43,7 +42,7 @@
                 <div class="row">
 
 
-                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/home'">
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='${pageContext.request.contextPath}/user/home'">
                         <div class="highlightOnHover grey card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -63,7 +62,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/santa'">
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='${pageContext.request.contextPath}/user/santa'">
                         <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -83,7 +82,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/addPresent'">
+                    <div class="col-md-4 mb-4" onclick="javascript:document.location.href='${pageContext.request.contextPath}/user/addPresent'">
                         <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
@@ -112,7 +111,7 @@
                             <div class="card-body">
                                 <div class="text-center">
                                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 30rem;"
-                                         src="/img/Merry-Christmas.jpg">
+                                         src="${pageContext.request.contextPath}/img/Merry-Christmas.jpg">
                                 </div>
                                 <p><spring:message code="pl.coderslab.christmass.home.greetings"/>
                                     <br> <spring:message code="pl.coderslab.christmass.home.greetingsInfo"/>

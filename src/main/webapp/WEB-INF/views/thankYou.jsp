@@ -25,7 +25,8 @@
 <%--            <img src='<c:url value="/img/gift.jpg"></c:url>--%>
             <h3><spring:message code="pl.coderslab.christmass.merryChristmas"/>!</h3>
             <p style="font-size:20px;color:#5C5C5C;"><spring:message code="pl.coderslab.christmass.thankyou"/></p>
-             <a href="/login" class="btn btn-success"><spring:message code="pl.coderslab.christmass.loginhereAgain"/></a>  
+             <a href="${pageContext.request.contextPath}/login" class="btn btn-success">
+                 <spring:message code="pl.coderslab.christmass.loginhereAgain"/></a>  
             <br><br>
         </div>
 

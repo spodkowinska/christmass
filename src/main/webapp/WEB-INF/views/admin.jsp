@@ -13,7 +13,7 @@
     <script>
         function confirmDelete(id, name) {
             if (confirm("Do you want to delete user '" + name + "'?")) {
-                window.location.href = "/admin/deleteUser/" + id;
+                window.location.href = "${pageContext.request.contextPath}/admin/deleteUser/" + id;
             }
         }
     </script>
@@ -26,7 +26,7 @@
 </c:if>
 <nav class="navbar navbar-light" style="background-color: #f71317">
     <a class="text-xs font-weight-bold mb-1" style="color: white">Very Merry Christmas ${user.fullName}!</a>
-    <form action="<c:url value="/logout"/>" method="post" class="form-inline">
+    <form action="<c:url value="${pageContext.request.contextPath}/logout"/>" method="post" class="form-inline">
         <button class="btn btn-outline-light my-2 my-sm-0 text-white" type="submit" value="Logout">Logout</button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
@@ -39,15 +39,15 @@
         <div class="card-body">
         <div class="row">
         <div class=" col-md-5">
-            <a href="/admin/addUser" class="btn btn-success">Add new user</a>
+            <a href="${pageContext.request.contextPath}/admin/addUser" class="btn btn-success">Add new user</a>
         </div>
 
         <div class=" col-md-3">
-            <a href="/user/home" class="btn btn-success text-center">User Home Panel</a>
+            <a href="${pageContext.request.contextPath}/user/home" class="btn btn-success text-center">User Home Panel</a>
         </div>
 
         <div class=" col-md-4 ">
-            <a href="/admin/sendMessage" class="btn btn-success float-right">Send new message</a>
+            <a href="${pageContext.request.contextPath}/admin/sendMessage" class="btn btn-success float-right">Send new message</a>
         </div>
     </div>
     </div>
@@ -82,7 +82,7 @@
                                             <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">READY</a>
                                         </c:when>
                                         <c:when test="${user.status eq \"SANTA\"}">
-                                            <a class="btn btn-primary" href="/admin/changeStatus/${user.id}">SANTA</a>
+                                            <a class="btn btn-primary" href="${pageContext.request.contextPath}/admin/changeStatus/${user.id}">SANTA</a>
                                         </c:when>
                                     </c:choose>
                                 </td>
@@ -105,7 +105,7 @@
                         </c:forEach>
 
                     </table>
-                    <form method="get" action="/admin/joinInPairs" >
+                    <form method="get" action="${pageContext.request.contextPath}/admin/joinInPairs" >
                             <select name="event">
                                 <c:forEach items="${events}" var="event" >
                                     <option value="${event.id}" >${event.name}</option>

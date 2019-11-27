@@ -34,7 +34,7 @@
 			</div>
 			<h2>Oops! This Page Could Not Be Found</h2>
 			<p>Sorry but the page you are looking for does not exist, have been removed,<br> name changed or is temporarily unavailable</p>
-			<a href="/user/home">It's already late go home...</a>
+			<a href="${pageContext.request.contextPath}/user/home">It's already late go home...</a>
 		</div>
 	</div>
 
