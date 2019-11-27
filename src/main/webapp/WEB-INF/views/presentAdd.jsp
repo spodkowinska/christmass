@@ -19,7 +19,12 @@
 
 
 </head>
+<c:if test="${param.present eq 1}">
+<body onload="iziToast.success({title: 'Wspaniale',message: 'Twoje prezenty zostały dodane!'});">
+</c:if>
+<c:if test="${param.present!=1}">
 <body>
+</c:if>
 <nav class="navbar navbar-light" style="background-color: #f71317">
     <a class="text-xs font-weight-bold mb-1" style="color: white"><spring:message code="pl.coderslab.christmass.merryChristmas"/> ${user.fullName}!</a>
     <form action="<c:url value="/logout"/>" method="post" class="form-inline">

@@ -175,8 +175,7 @@
 </head>
 
 <c:if test="${param.registration eq 1}">
-<body onload="iziToast.show({title: 'Hey',message: 'What would you like to add?'
-});">
+<body onload="iziToast.success({title: 'Zarejestrowano poprawnie!',message: 'Teraz możesz się zalogować'});">
 </c:if>
 <c:if test="${param.registration!=1}">
 <body>
