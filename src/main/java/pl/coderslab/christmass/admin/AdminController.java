@@ -111,7 +111,7 @@ public class AdminController {
     @GetMapping("/joinInPairs")
     public String join(@RequestParam int event) {
         if (santaService.findAllSantas().size() > 0) {
-            return "redirect:../../user/home";
+            return "redirect:usersList?pairs=false";
         } else {
 //            Long id = Long.parseLong(eventId);
         int id = event;
@@ -119,7 +119,7 @@ public class AdminController {
             userService.findByStatus(Status.PAID).stream().filter(u->u.getEvent().contains(eventService.findById((long)
                     id)))
                     .forEach(n -> userService.changeStatus(Status.READY, n.getId()));
-            return "redirect:usersList";
+            return "redirect:usersList?pairs=true";
         }
     }
 

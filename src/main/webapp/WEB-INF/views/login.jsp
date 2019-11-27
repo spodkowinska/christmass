@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,15 +8,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login to Christmass</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Login to Christmas</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <script src="<c:url value="/resources/js/iziToast.min.js"/>" type="text/javascript"></script>
+
+    <link href="<c:url value="/resources/css/iziToast.min.css"/>" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+
     <style type="text/css">
         body {
             color: #999;
@@ -165,7 +173,14 @@
     </script>
 
 </head>
+
+<c:if test="${param.registration eq 1}">
+<body onload="iziToast.success({title: 'Zarejestrowano poprawnie!',message: 'Teraz możesz się zalogować'});">
+</c:if>
+<c:if test="${param.registration!=1}">
 <body>
+</c:if>
+
 <spring:message code="pl.coderslab.christmass.email" var="email"/>
 <spring:message code="pl.coderslab.christmass.password" var="pass"/>
 <spring:message code="pl.coderslab.christmass.signIn" var="signIn"/>
@@ -183,7 +198,7 @@
         <div class="form-group small clearfix">
             <label class="checkbox-inline"><input type="checkbox"> <spring:message
                     code="pl.coderslab.christmass.remember"/></label>
-            <a href="#" class="forgot-link"> <spring:message code="pl.coderslab.christmass.forgot"/></a>
+<%--            <a href="#" class="forgot-link"> <spring:message code="pl.coderslab.christmass.forgot"/></a>--%>
         </div>
         <input type="submit" class="btn btn-primary btn-block btn-lg" value="${signIn}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

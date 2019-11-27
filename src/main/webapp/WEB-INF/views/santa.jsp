@@ -11,6 +11,7 @@
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
 </head>
 <body>
+
 <nav class="navbar navbar-light" style="background-color: #f71317">
     <a class="text-xs font-weight-bold mb-1" style="color: white"><spring:message code="pl.coderslab.christmass.merryChristmas"/> ${user.fullName}!</a>
     <form action="<c:url value="/logout"/>" method="post" class="form-inline">
@@ -57,7 +58,7 @@
 
 
                     <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/santa'">
-                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
+                        <div class="highlightOnHover grey card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
@@ -127,7 +128,7 @@
                                         </c:when>
                                         <c:when test="${user.status == \"SANTA\"}">
                                             <p><spring:message code="pl.coderslab.christmass.santa.1"/>
-                                                <b><c:out value="${santaPair.get(userId)}"/></b>
+                                                <b><c:out value="${santaPair.get(userId)}"/></b><br>
 <%--                                                <spring:message code="pl.coderslab.christmass.santa.2"/></p><br>--%>
                                             <c:if test="${presentsByGiver.containsKey(userId)}">
                                                 <spring:message code="pl.coderslab.christmass.santa.3"/>

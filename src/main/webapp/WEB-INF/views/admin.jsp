@@ -18,7 +18,12 @@
         }
     </script>
 </head>
-<body>
+<c:if test="${param.pairs eq 'true'}">
+<body onload="iziToast.success({title: 'Połączono poprawnie!',message: 'Już można losować'});">
+</c:if>
+<c:if test="${param.pairs eq 'false'}">
+<body onload="iziToast.warning({title: 'Wystąpił błąd!',message: 'Sprawdź, co poszło nie tak.'});">
+</c:if>
 <nav class="navbar navbar-light" style="background-color: #f71317">
     <a class="text-xs font-weight-bold mb-1" style="color: white">Very Merry Christmas ${user.fullName}!</a>
     <form action="<c:url value="/logout"/>" method="post" class="form-inline">

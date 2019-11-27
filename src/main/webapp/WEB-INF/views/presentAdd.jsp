@@ -7,13 +7,24 @@
 <html lang="en">
 <head>
     <title>Presents</title>
-    <script src="<c:url value="/webjars/jquery/3.0.0/jquery.min.js"/>"></script>
-    <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
+
+
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/iziToast.min.css"/>" rel="stylesheet"/>
+
+    <script src="<c:url value="/resources/js/iziToast.min.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="/webjars/jquery/3.0.0/jquery.min.js"/>"></script>
+    <script src="<c:url value="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"/>"></script>
+
 
 </head>
+<c:if test="${param.present eq 1}">
+<body onload="iziToast.success({title: 'Wspaniale',message: 'Twoje prezenty zostały dodane!'});">
+</c:if>
+<c:if test="${param.present!=1}">
 <body>
+</c:if>
 <nav class="navbar navbar-light" style="background-color: #f71317">
     <a class="text-xs font-weight-bold mb-1" style="color: white"><spring:message code="pl.coderslab.christmass.merryChristmas"/> ${user.fullName}!</a>
     <form action="<c:url value="/logout"/>" method="post" class="form-inline">
@@ -80,7 +91,7 @@
                     </div>
 
                     <div class="col-md-4 mb-4" onclick="javascript:document.location.href='/user/addPresent'">
-                        <div class="highlightOnHover card border-left-primary shadow h-100 py-2">
+                        <div class="highlightOnHover grey card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
@@ -124,7 +135,7 @@
 
 
                                     <div class="text-left">
-                                        <form:form modelAttribute="present2" method="post">
+                                        <form:form modelAttribute="present1" method="post">
                                         <div class="form-group shadow-textarea">
                                             <label for="exampleFormControlTextarea6">
                                                 <spring:message code="pl.coderslab.christmass.present.3"/>
@@ -136,7 +147,7 @@
 
 
                                         <div class="text-left">
-                                            <form:form modelAttribute="present3" method="post">
+                                            <form:form modelAttribute="present1" method="post">
                                                 <div class="form-group shadow-textarea">
                                                     <label for="exampleFormControlTextarea6">
                                                         <spring:message code="pl.coderslab.christmass.present.4"/>
@@ -147,7 +158,9 @@
                                                 </div>
                                                 <spring:message code="pl.coderslab.christmass.presentBtn" var="presentSubmitBtn" />
                                                 <input type="submit" value= "${presentSubmitBtn}"
-                                                       class="btn btn-danger btn-block">
+                                                       class="btn btn-danger btn-block" onclick="iziToast.show({
+                                                       title: 'Hey', message: 'What would you like to add?'
+                                                });"/>
                                             </form:form>
                                             </form:form>
                                             </form:form>
